@@ -33,12 +33,6 @@ public class TimeTable {
 		     //Create a linked list of calendar days <CalDay> to return
 	        LinkedList<CalDay> calDays = new LinkedList<CalDay>();
 	     
-			if(true){
-				String todatDate=firstDay.get(Calendar.MONTH)+ "/"+ firstDay.get(Calendar.DAY_OF_MONTH)+"/"+firstDay.get(Calendar.YEAR);
-				String tomorrowDate=lastDay.get(Calendar.MONTH)+ "/"+ lastDay.get(Calendar.DAY_OF_MONTH)+"/"+lastDay.get(Calendar.YEAR);
-				System.out.println("today is:" + todatDate);
-				System.out.println("tomorrow is:" + tomorrowDate);
-			}
 
 	        
 	        //Make sure that the first day is before the last day
