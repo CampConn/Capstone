@@ -1,0 +1,65 @@
+\documentclass[letterpaper,10pt,fleqn,draftclsnofoot,onecolumn]{IEEEtran}
+
+\renewcommand{\baselinestretch}{1.0}
+\usepackage{setspace}
+\usepackage{graphicx}                                        
+\usepackage{amssymb}                                         
+\usepackage{amsmath}                                         
+\usepackage{amsthm}                                          
+\usepackage{alltt}                                           
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+\usepackage{balance}
+\usepackage[margin=0.75in]{geometry}
+\geometry{textheight=8.5in, textwidth=6in}
+\newcommand{\cred}[1]{{\color{red}#1}}
+\newcommand{\cblue}[1]{{\color{blue}#1}}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{longtable,hyperref}
+\newcommand{\longtableendfoot}
+
+
+
+\title{3D Object Pose Tracking for Robotics Grasping}
+\def\name{Jiawei Mo \\ CS461 FALL 2018 }
+\author{\name}
+\begin{document}
+	\maketitle
+	\hrulefill
+	{\fontfamily{cmss}\selectfont
+	\section*{Abstract}
+	This project aims to improve the robotics grasping. To track the robot pose, it needs a large quantity of data. With the valid data, it is likely to construct the 3D scene and locate the object. The project is a part of a larger, on-going project to automatically generate, try, and record robotic grasps with a real robotic hand. With initial code (specifically for reconstructing the hand position and initial segmentation), cameras, and the physical set-up, our team will reconstruct the scene and adjust the lighting changes to improve the track of the grasping position. 
+	\newpage
+	
+	\section*{Problem Statement}
+	This project is focusing on 3D object pose tracking for Robotics Grasping. There is a robotic arm that can move at three dimensions. The object is randomly placed around the robotic arm and it is supposed to recognize the object. After having the object position, the robot will compute a number of the data and try to grab the object. \newline
+	
+The project aims to improve the robotic grasping through analyzing the object image. Unlike the human beings, the robots do not have accurate sense of view and touch. There is a method to enhance the robotics senses through implementing powerful sensors. However, it will cost a lot to boost the ability of the robotics senses. Thus, the professor and her team are looking for a new approach, which is to emulate the grasping action of people. With developing computer algorithm, the robotics arm will determine the apropos path and performance to grasp the object. 
+
+	
+	\subsection{Description of early progress}
+	The first step to implement the robotics grasping project is to learn the action of people. That is to research the human behaviors when they are trying to grasp an object. The robot is assumed to own three fingers for grasping and is tested by giving parameterized size objects and grasp pre-shape. To test in distinct methods would give developers the concept of the way to grasp given objects. By analyzing the results, researchers could know about advantages and insufficiencies of the robot. Developers noticed the robotics arm is not as agile as human beings arms, which leads to a development of grasp pre-shape. By assuming that the object is immovable, they oriented specific finger to pick up the object. For instance, the thumb is oriented along the fundamental axis to pick up a cube at corner. It demonstrates that the pre-shape grasping has benefits. In this stage, developers built four shapes of objects for testing, including cube, ellipsoid, cone, and cylinder. Parameterized by width, height, extent, and symmetries, there are over one hundred configurations to test robotics grasping. \newline
+	
+	The next plan is to create image sets collection of grasping by OpenRAVE. It could afford developers the valid human beings simulation data, which helps further robotics design, grasp planning and object determination. Specifically, human simulation researches help to determine the range of the graspable object size. Robotics grasping requires precise and assured data to pick up the object. Collecting data from human simulation assists to find the boundary between the successful size and unsuccessful size. Developers designed a human research to collect valid and correlative data. With a concern that participants might not familiar with robotics and kinematics, they made presentation and videos to clarify the target of the research. There are demonstrations of robot hand and simulated hand to illustrate the feasible motion. They raised example questions and explained by giving both video and text demonstration of the features, like the surface texture of the object and mechanism of the holding the object, to help the participants to understand the how the robotics hand move. The videos are available online and they are limited around twenty five minutes. Presenting different views on the screen would help the takers to know about the situation. \newline
+	
+	\subsubsection{Survey I: One dimension bracketing}
+The one question form is one dimension bracketing. In this case, the object and grasp are set to the middle value of the reachable ranges. Five images are presented to show the range from smallest graspable object size to largest. At the bottom of the screen, there are sliders to change the smallest and largest size. Participants have to adjust the two sliders in order to pick up the object successfully. For each unique question, it would collect configurations of height, weight, and extent. \newline
+    
+    \subsubsection{Survey II: Two dimensions sampling}
+In addition, developers created another survey method called two dimensions sampling. To perform the survey, there are two dimensions values that are modified at the time. Participants are required to choose the objects that are graspable. Then, they collect the size values and the object types. To specify the idea, the point to grasp and the size of the object would be the two variables. Developers used the data from the one dimension bracketing survey to generate objects with various size. They affirmed the sampling directions through drawing the normal line of each triangle surface of a polytope. Also, the points of interest are taken by tagging the center of each triangle surface. This survey elevates the accuracy of the graspable range of the type of object. \newline
+
+\subsubsection{Survey III: Grasp validation}
+Moreover, there is a final survey, the grasp validation. It aims to validate the data collected from the previous surveys and figure out the preference of the diverse objects, which are given fixed size and shape. Showing the pre-shape objects to the takers and they are asked to choose all the objects that they think would be graspable. The participants’ choices generated confidence values of each sized object. The collected data could show how many people think the specific object grasping is achievable and the confidence value would exhibit the successful possibility to grasp the object. \newline
+	
+	\subsection{Proposal}
+	%[1] and [2] are placeholders for bibliography
+	With the data collected from the early researches, the future target is to implement the robot by using analyzed data to guide the robotic arm to grasp the object. We are using two video streams to build up the scene. The scene would tell the robot where the object is. Since the scene reconstruction results from the real view. We have to deal with lighting changes in order to not lose the track of the object. If we accomplish the scene reconstruction, the additional task is to deal with the position uncertainties. The result of this project is to track the robot pose while it is trying to pick up the object. \newline
+	
+	\subsection{Performance Metrics}
+	%[1] and [2] are placeholders for bibliography
+	This research is based on the initial code and physics set-up. (1) We are going to build up the 3D scene at first. (2) To adjust the lighting changes. (3) Finally, the robot pose is supposed to be trackable.
+	
+}
+\end{document}
