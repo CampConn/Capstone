@@ -1,0 +1,331 @@
+\documentclass[10pt,journal,compsoc, draftclsnofoot,onecolumn]{IEEEtran}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{epstopdf}
+\usepackage{amssymb}                                         
+\usepackage{amsmath}                                         
+\usepackage{amsthm}                                          
+
+\usepackage{alltt}                                           
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+
+
+\usepackage{balance}
+\usepackage{enumitem}
+\usepackage{pstricks, pst-node}
+
+\usepackage[margin=0.75in]{geometry}
+\geometry{textheight=8.5in, textwidth=6in}
+
+\newcommand{\cred}[1]{{\color{red}#1}}
+\newcommand{\cblue}[1]{{\color{blue}#1}}
+\usepackage{geometry}
+
+\usepackage{hyperref}
+\input{pygments.tex}
+
+\begin{document}
+
+\title{
+Progress Report\\
+3D Object Pose Tracking for Robotics Grasping \\
+CS461 Fall 2018
+}
+\author{Connor Campbell, Chase McWhirt and Jiawei Mo}
+
+\maketitle
+
+\begin{abstract}
+The purpose of the project is to find the best of three methods for masking objects in two video feeds in real time.
+Progress has mostly been researching, planning, and documenting what will go into a project like this.
+There's a few obstacles that will have to be overcome, including the semantics of implementation, communication, and meeting the time line.
+There is no code currently, but the client will have a data set ready by the end of Fall term.
+Finally, a list of weekly summaries is given.
+\end{abstract}
+
+\IEEEdisplaynontitleabstractindextext
+\IEEEpeerreviewmaketitle
+
+\newpage
+\pagebreak
+\tableofcontents
+\pagebreak
+
+\section{Purpose}
+
+The purpose of this project is to find the best method of creating a mask over a desired object in real time.
+The desired object will be a robotic arm.
+As stretch goals, the best masking method will also be used to define the space in which the object to be manipulated by the robotic arm exists in.
+A final stretch goal would be to ensure both methods can run simultaneously without compatibility issues.
+
+
+\section{Goals}
+
+There are eight primary goals, as well as two stretch goals.
+
+\begin{enumerate}
+\item Defining masks over the data set using Gimp or Photoshop.
+\item Implementing k-means clustering over all data. 
+This will become the straw man to compare other implementations against.
+\item Organize the data into groups by using a nearest neighbor algorithm.
+\item Implement k-means clustering for each group defined in 3.
+\item Implement a neural network for each group defined in 3.
+\item Implement a support vector machine for each group defined in 3.
+\item Test implementations over 10\% of data.
+This data can not be used for training.
+\item Report results and define best implementation from 4, 5, and 6.
+\end{enumerate}
+
+\noindent
+There are two stretch goals.
+
+\begin{enumerate}
+\item Implement best method found in 8 to define the object to be manipulated by the arm.
+\item Ensure both methods can run effectively simultaneously.
+\end{enumerate}
+
+
+\section{Progress}
+
+There has been a lot of research collected, planning, and documentation written about this project.
+Primarily, the research has been oriented around understanding the goals established by the client.
+There is also some research about other tools that will be useful during implementation from technical reviews.
+A time line has been created to help guide the project to completion.
+Documentation has been written about the problem in general, the specific requirements that need to solved, the design of the general solution, and this progress report.
+There has also been individual based documentation, allowing for more opportunity to research and plan, such as in the technical review.
+
+
+\section{Obstacles and Solutions}
+
+\subsection{Communication}
+\noindent
+Communication has been challenging overall.
+At the start of the term, email was used primarily for communication.
+With lack of consistently checking email, communication could take much longer than necessary.
+This obstacle has been mostly resolved now that group 15 uses Slack to communicate.
+
+
+\subsection{Following the Time Line}
+\noindent
+This could be extremely challenging due to there being three implementations.
+The current time line is functional, but seems very tight, and not friendly to unforeseen time constraints presented by other classes.
+Even if the time line is followed as expected, it could become way more stressful than anticipated.
+I think the best solution would be to change one of the planned implementations into a stretch goal.
+This could either be the support vector machine implementation or the custom neural network implementation.
+
+
+\subsection{Read Images' Data}
+\noindent
+The problem is that the neural networking process can not recognize the input images.
+Thus, it is necessary to transfer the images to digits and then feed data to neural networking process.
+The solution is to store images and information about them in matrices that the software can understand, as well as the ability to manipulate that information.
+
+\noindent 
+In order to store and manipulate images, OpenCV will be used.
+OpenCV is an open source C/C++ library aimed at solving computer vision problems \cite{1:online}.
+OpenCV stores the pixels of an image in a matrix.
+Depending on the type of picture, each pixel can hold various values representing their color.
+Each value in the matrix can represent a variable of RGB (BGR instead of RGB in OpenCV functions) or gray scale.
+A pixel's color is described and manipulated through the use of a channel, which stores many values related to the pixel and automatically adjusts related values when one is changed.
+For instance, it can convert from BGR to HSV and vice versa, which allows for HSV to be used even if the image is based on the RGB color system.
+For the purposes of this project, OpenCV will convert the colors of the pixels in an image into a set of values that the software will understand.
+
+
+\subsection{Increase Color Contrast}
+Basically, this process is called Masking.
+This solution is considered as a result of improving pixels determination.
+Each image will have three status.
+They are object, robotics hand and background.
+Every single pixel is holding one of them but it might be hard to determine pixel's status at the outline, which is the boundary of two different things.
+To make an assumption, there is an red object and the background is white.
+Pixels could be light red at the boundary between object and the background.
+A mask process will assign the pixel to either object or background to increase the color difference.
+Essentially, the mask operation looks for sudden changes in color within an image to determine approximate boundaries for different objects.
+After obtaining an approximate area, the neural network will be tasked with providing a more precise identification.
+The client suggests using the K-means algorithm for this as well.
+
+
+\section{Code Insertion}
+So far there has not been any actual coding, as the early stage of the project is simply to gather information and build a foundation of knowledge that will avoid problems impeding progress.
+See the presentation of the idea behind the algorithm and technologies. 
+
+
+%\newpage
+%\section{Weekly Summary}
+% This section is going to be the table
+%yeah, that's what I was planning
+%**combine yours
+
+%\subsection{Week One}
+%The project information had not been posted and team had not been assigned.
+%The first week was a buffer time to get back to academic year and be adapted to courses. 
+
+%\subsection{Week Two}
+%No progress this week.
+
+%\subsection{Week Three}
+%Applicants filed for their desired projects.
+%Groups were designated and the Github repository of the group is established for the future progress tracing. 
+
+%\subsection{Week Four}
+%Group met with client to build up a perspective of the project and the expectation of the final version.
+%A stationary schedule for communicating was not confirmed.
+%Group was starting the Problem Statement assignment.
+
+%\subsection{Week Five}
+%Group met with client in order to understand detailed requirements of the project.
+%Group came out the outline for Requirements Document assignment.
+%Moreover, Gantt Chart was generated and included into the document to afford the group a solid workflow in the future.
+%Knowing that the robotic grasping used OpenRAVE to capture the scene through cameras, Jiawei was looking at OpenRAVE examples online and some researches of this open source. 
+
+%\subsection{Week Six}
+%Group decided the Team Standards that depicts common regulations of the team.
+%Also, group kept working on Requirements Document.
+%The problem is that none of us in the group have machine learning experiences or taking the courses opened in spring term.
+%The Requirements Document's machine learning part showed a weak and invalid implementation to TA.
+%Group tried to revise it later after next meeting with the client.
+%Further, Tech Review started. 
+
+%\subsection{Week Seven}
+%Week seven marked when the group worked on the Tech Review essay, a detailed document summarizing all the research and reading the group members had completed.
+%Some challenges of this paper included understanding a specific problem in the whole project and doing researches to find other technologies that can replace the current solutions. 
+
+%\subsection{Week Eight}
+%Group met the client, which had narrowed down the project's goals and design.
+%Preparing the Design Document and asking the client the machine learning part with detailed questions and the anticipated outcomes to confirm the solution is valid.
+%Jiawei was looking at OpenCV function library that could be implemented into the project in order to transfer images to digits. 
+
+%\subsection{Week Nine}
+%Week nine consisted of teamwork on researching and Design Document with feedback gave by the client.
+%At this time, group had a stronger understanding of the machine learning section and how to implement it efficiently, which includes data feeding, data processing, training and outcome comparison. 
+
+%\subsection{Week Ten}
+%Group completed the Design Document and prepared the Progress Update assignment including a video/presentation.
+%A Todo list was generated and shared on the Google doc.
+%Each member was assigned a few fragments of the project to do presentation and videos would be combined at the end.
+%Also, a Github link that contains essays was sent to the client for a verification. 
+
+
+\section{Retrospective Table}
+\begin{center}
+ \begin{tabular}{|p{0.2\linewidth}|p{0.2\linewidth}|p{0.2\linewidth}|p{0.2\linewidth}|}
+  \hline
+ Week & Positives & Deltas & Actions \\ [0.5ex]
+ \hline\hline
+ 
+
+4
+&
+Group met with client to build up a perspective of the project and the expectation of the final version.
+Group was starting the Problem Statement assignment.
+&
+A stationary schedule for communicating was not confirmed.
+&
+
+\\ \hline
+
+5
+&
+Group met with client in order to understand detailed requirements of the project.
+Group came out the outline for Requirements Document assignment.
+Moreover, Gantt Chart was generated and included into the document to afford the group a solid workflow in the future.
+Knowing that the robotic grasping used OpenRAVE to capture the scene through cameras, Jiawei was looking at OpenRAVE examples online and some researches of this open source. 
+&
+
+&
+
+\\ \hline
+ \end{tabular}
+\end{center}
+
+\section{Retrospective Table}
+\begin{center}
+ \begin{tabular}{|p{0.2\linewidth}|p{0.2\linewidth}|p{0.2\linewidth}|p{0.2\linewidth}|}
+  \hline
+ Week & Positives & Deltas & Actions \\ [0.5ex]
+ \hline\hline
+
+6
+&
+Group decided the Team Standards that depicts common regulations of the team.
+Also, group kept working on Requirements Document.
+Further, Tech Review started. 
+&
+The problem is that none of us in the group have machine learning experiences or taking the courses opened in spring term.
+The Requirements Document's machine learning part showed a weak and invalid implementation to TA.
+&
+Group attempted to revise Requirements Document later after next meeting with the client.
+\\ \hline
+
+7
+&
+Group continued working on Tech Review
+&
+We decided that we need to improve communication between group members
+&
+We set up a channel on Slack for more immediate communication than email
+\\ \hline
+
+
+8
+&
+Group met the client, which had narrowed down the project's goals and design.
+Preparing the Design Document and asking the client the machine learning part with detailed questions and the anticipated outcomes to confirm the solution is valid.
+Jiawei was looking at OpenCV function library that could be implemented into the project in order to transfer images to digits. 
+&
+
+&
+
+\\ \hline
+
+ \end{tabular}
+\end{center}
+
+\section{Retrospective Table}
+\begin{center}
+ \begin{tabular}{|p{0.2\linewidth}|p{0.2\linewidth}|p{0.2\linewidth}|p{0.2\linewidth}|}
+  \hline
+ Week & Positives & Deltas & Actions \\ [0.5ex]
+ \hline\hline
+
+9
+&
+Week nine consisted of teamwork on researching and Design Document with feedback gave by the client.
+At this time, group had a stronger understanding of the machine learning section and how to implement it efficiently, which includes data feeding, data processing, training and outcome comparison. 
+&
+
+&
+
+\\ \hline
+
+10
+&
+Group completed the Design Document and prepared the Progress Update assignment including a video/presentation.
+A Todo list was generated and shared on the Google doc.
+Each member was assigned a few fragments of the project to do presentation and videos would be combined at the end.
+Also, a Github link that contains essays was sent to the client for a verification. 
+&
+
+&
+
+\\ \hline
+
+ 
+ 
+ 
+ 
+ 
+ \end{tabular}
+\end{center}
+
+
+\newpage
+% bibliography
+\nocite{*}%if nothing is referenced it will still show up in refs
+\bibliographystyle{ieeetr}
+\bibliography{refs}
+%end bibliography
+\end{document}
