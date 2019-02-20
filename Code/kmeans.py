@@ -46,7 +46,6 @@ jpeg_feed = jpeg.reshape(jpeg.shape[0] * jpeg.shape[1] * jpeg.shape[2], 1)
 # KMEANS
 n_clusters = 2
 kmeans = KMeans(n_clusters=n_clusters, random_state=0).fit(jpeg_feed)
-labels = kmeans.labels_
 
 # read a test
 test = read_img("test\\")
