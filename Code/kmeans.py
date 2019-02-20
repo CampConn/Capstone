@@ -1,12 +1,12 @@
 import os
-from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg    # img reading
-from scipy import misc
 import numpy as np
+from sklearn.cluster import KMeans
 from sklearn.datasets import load_digits
-from scipy.stats import mode
 from sklearn.metrics import accuracy_score
+from scipy.stats import mode
+from scipy import misc
 
 ### show
 def show_img(img):
