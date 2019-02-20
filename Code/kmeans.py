@@ -1,4 +1,5 @@
 import os
+# TO DO: Delete all unnecessary references (load_digits; accuracy_score; etc)
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg    # img reading
 import numpy as np
@@ -7,6 +8,8 @@ from sklearn.datasets import load_digits
 from sklearn.metrics import accuracy_score
 from scipy.stats import mode
 from scipy import misc
+
+# TO DO: Understand this code. Reshape seems to be used too much.
 
 ### show
 def show_img(img):
@@ -37,15 +40,16 @@ def read_img(path):
     return set
 
 ### main
-png = read_img("png\\")
-jpeg = read_img("jpeg\\")
+# png = read_img("png\\")
+raw = read_img("..\\Robot Arm Pictures\\Originals")
 print("--------------------------\n")
-png_feed = png.reshape(png.shape[0] * png.shape[1] * png.shape[2], 1) * 255.
-jpeg_feed = jpeg.reshape(jpeg.shape[0] * jpeg.shape[1] * jpeg.shape[2], 1)
+# png_feed = png.reshape(png.shape[0] * png.shape[1] * png.shape[2], 1) * 255.
+rawFeed = raw.reshape(raw.shape[0] * raw.shape[1] * raw.shape[2], 1)
 
 # KMEANS
 n_clusters = 2
-kmeans = KMeans(n_clusters=n_clusters, random_state=0).fit(jpeg_feed)
+kmeans = KMeans(n_clusters=n_clusters, random_state=0).fit(rawFeed)
+labels = kmeans.labels_
 
 # read a test
 test = read_img("test\\")
