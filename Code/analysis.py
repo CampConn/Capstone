@@ -1,13 +1,12 @@
 import os
-# TO DO: Delete all unnecessary references (load_digits; accuracy_score; etc)
-# import matplotlib.pyplot as plt
-# import matplotlib.image as mpimg    # img reading
-# import numpy as np
-# from sklearn.cluster import KMeans
-# from sklearn.datasets import load_digits
-# from sklearn.metrics import accuracy_score
-# from scipy.stats import mode
-# from scipy import misc
+from sklearn.cluster import KMeans
+from sklearn.metrics import accuracy_score
+from sklearn.datasets import load_digits
+from scipy import misc
+from scipy.stats import mode
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg    # img reading
+import numpy as np
 
 # # TO DO: Understand this code. Reshape seems to be used too much.
 
@@ -23,39 +22,18 @@ import os
 # def greyscale(rgb):
 #     return np.dot(rgb[...,:3], [0.299, 0.587, 0.114])
 
-# ### read
-# def read_img(path):
-#     i = 0
-#     for filename in os.listdir(path):
-#         i += 1
-#         print(filename)
-#         hand = mpimg.imread(path + filename)
-#         hand = greyscale(hand)
-#         if i == 1:
-#             set = np.array(hand)
-#         else:  
-#             set = np.concatenate( ( set, np.array(hand) ), axis = 0 )
-#     set = set.reshape( i, 480, 640)
-#     print(path, 'set shape = ', set.shape)
-#     return set
+# Okay, here's what I need to do:
+# Read image 1, image 2
+# Compare pixel by pixel.
+# Image 1 is "truth"
+# Image 2 is "kmeans"
+# True positive is when they agree on white.
+# True negative is when they agree on black.
+# False positive is when kmeans says white when truth says black.
+# False negative is when kmeans says black when truth says white.
 
-# ### main
-# # png = read_img("png\\")
-# raw = read_img("..\\Robot Arm Pictures\\Originals")
-# print("--------------------------\n")
-# # png_feed = png.reshape(png.shape[0] * png.shape[1] * png.shape[2], 1) * 255.
-# rawFeed = raw.reshape(raw.shape[0] * raw.shape[1] * raw.shape[2], 1)
+# All I want to do is print out the integer counter for these four states.
+# I am expecting to manually record them.
+# This script can be given two directories.
+# When given two directories it can compare all images of the same name.
 
-# # KMEANS
-# n_clusters = 2
-# kmeans = KMeans(n_clusters=n_clusters, random_state=0).fit(rawFeed)
-# labels = kmeans.labels_
-
-# # read a test
-# test = read_img("test\\")
-# test = test.reshape(480 * 640, 1)
-
-# # predict
-# result = kmeans.predict(test)
-# result = result.reshape(480, 640)
-# show_img(result)
