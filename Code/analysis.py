@@ -8,19 +8,16 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg    # img reading
 import numpy as np
 
-# # TO DO: Understand this code. Reshape seems to be used too much.
+truthPath = 'Robot Arm Pictures\\Photoshop Masks'
+kmeansPath = 'Robot Arm Pictures\\K-means Strawman'
 
-# ### show
-# def show_img(img):
-#     plt.figure('Image')
-#     plt.imshow(img)
-#     plt.axis('on')
-#     plt.title('Image')
-#     plt.show()
+print('\nTruth Images')
+for truthFile in os.listdir(truthPath):
+    print(truthFile)
 
-# ### greyscale
-# def greyscale(rgb):
-#     return np.dot(rgb[...,:3], [0.299, 0.587, 0.114])
+print('\nK-means Images')
+for kmeansFile in os.listdir(kmeansPath):
+    print(kmeansFile)
 
 # Okay, here's what I need to do:
 # Read image 1, image 2
@@ -36,4 +33,3 @@ import numpy as np
 # I am expecting to manually record them.
 # This script can be given two directories.
 # When given two directories it can compare all images of the same name.
-
