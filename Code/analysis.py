@@ -37,8 +37,27 @@ for truthFile in os.listdir(truthPath):
             print("Found a match with file: " + truthFile)
             truthImage = mpimg.imread(truthPath + "\\" + truthFile)
             kmeansImage = mpimg.imread(kmeansPath + "\\" + kmeansFile)
+            truePositive = 0
+            trueNegative = 0
+            falsePositive = 0
+            falseNegative = 0
+            totalPixels = 0
+            x = 0
+            y = 0
 
-# All I want to do is print out the integer counter for these four states.
-# I am expecting to manually record them.
-# This script can be given two directories.
-# When given two directories it can compare all images of the same name.
+            for row in truthImage:
+                for truthPixel in row:
+                    totalPixels += 1
+                    if(np.array_equal(truthPixel, [1.0, 1.0, 1.0, 1.0])):
+                        if(np.array_equal(truthPixel, kmeansImage[x][y])):
+                            truePositive += 1
+                        elif(np.array_equal(kmeansImage[x][y], [0.0, 0.0, 0.0, 1.0])):
+                            falseNegative +=1
+                    elif(np.array_equal(truthPixel, [0.0, 0.0, 0.0, 1.0])):
+                        if(np.array_equal(truthPixel, kmeansImage[x][y])):
+                            trueNegative += 1
+                        elif(np.array_equal(kmeansImage[x][y], [1.0, 1.0, 1.0, 1.0])):
+                            falsePositive +=1
+                    y += 1
+                y = 0
+                x += 1
