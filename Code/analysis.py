@@ -1,12 +1,6 @@
-import os
-from sklearn.cluster import KMeans
-from sklearn.metrics import accuracy_score
-from sklearn.datasets import load_digits
-from scipy import misc
-from scipy.stats import mode
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg    # img reading
-import numpy as np
+import os                           # Important for file matching
+import matplotlib.image as mpimg    # Image reading
+import numpy as np                  # Mandatory array stuff
 
 truthPath = 'Robot Arm Pictures\\Photoshop Masks'
 kmeansPath = 'Robot Arm Pictures\\K-means Strawman'
