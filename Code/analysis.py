@@ -41,6 +41,8 @@ for truthFile in os.listdir(truthPath):
             trueNegative = 0
             falsePositive = 0
             falseNegative = 0
+            truthErrors = 0
+            kmeansErrors = 0
             totalPixels = 0
             x = 0
             y = 0
@@ -53,11 +55,17 @@ for truthFile in os.listdir(truthPath):
                             truePositive += 1
                         elif(np.array_equal(kmeansImage[x][y], [0.0, 0.0, 0.0, 1.0])):
                             falseNegative +=1
+                        else:
+                            kmeansErrors += 1
                     elif(np.array_equal(truthPixel, [0.0, 0.0, 0.0, 1.0])):
                         if(np.array_equal(truthPixel, kmeansImage[x][y])):
                             trueNegative += 1
                         elif(np.array_equal(kmeansImage[x][y], [1.0, 1.0, 1.0, 1.0])):
                             falsePositive +=1
+                        else:
+                            kmeansErrors += 1
+                    else:
+                        truthErrors += 1
                     y += 1
                 y = 0
                 x += 1
