@@ -35,6 +35,8 @@ for truthFile in os.listdir(truthPath):
     for kmeansFile in os.listdir(kmeansPath):
         if(truthFile == kmeansFile):
             print("Found a match with file: " + truthFile)
+            truthImage = mpimg.imread(truthPath + "\\" + truthFile)
+            kmeansImage = mpimg.imread(kmeansPath + "\\" + kmeansFile)
 
 # All I want to do is print out the integer counter for these four states.
 # I am expecting to manually record them.
