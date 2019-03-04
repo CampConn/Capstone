@@ -2,26 +2,20 @@ import os                           # Important for file matching
 import matplotlib.image as mpimg    # Image reading
 import numpy as np                  # Mandatory array stuff
 
-truthPath = 'Robot Arm Pictures\\Photoshop Masks'
-kmeansPath = 'Robot Arm Pictures\\K-means Strawman'
-
-print('\nTruth Images')
-for truthFile in os.listdir(truthPath):
-    print(truthFile)
-
-print('\nK-means Images')
-for kmeansFile in os.listdir(kmeansPath):
-    print(kmeansFile)
-
-# Okay, here's what I need to do:
-# Read image 1, image 2
-# Compare pixel by pixel.
+# This script must be given two directories.
+# When given two directories it can compare all images of the same name.
+# Read image 1 from directory A, image 2 from directory B
 # Image 1 is "truth"
 # Image 2 is "kmeans"
+# Compare truth and kmeans pixel by pixel
 # True positive is when they agree on white.
 # True negative is when they agree on black.
 # False positive is when kmeans says white when truth says black.
 # False negative is when kmeans says black when truth says white.
+# Prints these four counters (and two error counters when necessary)
+
+# To do: Save the coordinates of truth errors so files can be cleaned manually.
+
 truthPath = "Robot Arm Pictures\\Photoshop Masks"
 kmeansPath = "Robot Arm Pictures\\K-means Strawman"
 
