@@ -69,3 +69,15 @@ for truthFile in os.listdir(truthPath):
                     y += 1
                 y = 0
                 x += 1
+
+            print("Total pixels: " + str(totalPixels))
+            print("True positives: " + str(truePositive) + " at " + str(truePositive * 100 / totalPixels))
+            print("True negatives: " + str(trueNegative) + " at " + str(trueNegative * 100 / totalPixels))
+            print("False positives: " + str(falsePositive) + " at " + str(falsePositive * 100 / totalPixels))
+            print("False negatives: " + str(falseNegative) + " at " + str(falseNegative * 100 / totalPixels))
+            if(truthErrors > 0):
+                print("Truth errors: " + str(truthErrors))
+                print("Truth errors occur when a pixel in the truth image is not black or white.")
+            if(kmeansErrors > 0):
+                print("K-means errors: " + str(kmeansErrors))
+                print("K-means errors occur when a pixel in the k-means image is not black or white.")
