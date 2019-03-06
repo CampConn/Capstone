@@ -33,13 +33,13 @@ with open('rectangles.csv', 'w', newline='') as csvFile:
                         y1 = currentY
                 elif(np.array_equal(truthPixel, [0.0, 0.0, 0.0, 1.0]) != True):
                     truthErrors += 1
-                currentY += 1
-            currentY = 0
-            currentX += 1
+                currentX += 1
+            currentX = 0
+            currentY += 1
 
         if(truthErrors > 0):
             # Truth errors occur when a pixel in the truth image is not black or white
             print("Truth errors: " + str(truthErrors))
         print('')
 
-        rectangleWriter.writerow([truthFile, y1, x1, y2, x2])
+        rectangleWriter.writerow([truthFile, x1, y1, x2, y2])
