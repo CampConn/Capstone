@@ -1,61 +1,72 @@
-import os
-# TO DO: Delete all unnecessary references (load_digits; accuracy_score; etc)
-# import matplotlib.pyplot as plt
-# import matplotlib.image as mpimg    # img reading
-# import numpy as np
-# from sklearn.cluster import KMeans
-# from sklearn.datasets import load_digits
-# from sklearn.metrics import accuracy_score
-# from scipy.stats import mode
-# from scipy import misc
+import os                           # Important for file matching
+import matplotlib.image as mpimg    # Image reading
+import numpy as np                  # Mandatory array stuff
 
-# # TO DO: Understand this code. Reshape seems to be used too much.
+# This script must be given two directories.
+# When given two directories it can compare all images of the same name.
+# Read image 1 from directory A, image 2 from directory B
+# Image 1 is "truth"
+# Image 2 is "kmeans"
+# Compare truth and kmeans pixel by pixel
+# True positive is when they agree on white.
+# True negative is when they agree on black.
+# False positive is when kmeans says white when truth says black.
+# False negative is when kmeans says black when truth says white.
+# Prints these four counters (and two error counters when necessary)
 
-# ### show
-# def show_img(img):
-#     plt.figure('Image')
-#     plt.imshow(img)
-#     plt.axis('on')
-#     plt.title('Image')
-#     plt.show()
+# To do: Save the coordinates of truth errors so files can be cleaned manually.
+# To do: Ensure output is clean for multiple files. (Would it be worth saving to a .txt?)
 
-# ### greyscale
-# def greyscale(rgb):
-#     return np.dot(rgb[...,:3], [0.299, 0.587, 0.114])
+truthPath = "Robot Arm Pictures\\Photoshop Masks"
+kmeansPath = "Robot Arm Pictures\\K-means Strawman"
 
-# ### read
-# def read_img(path):
-#     i = 0
-#     for filename in os.listdir(path):
-#         i += 1
-#         print(filename)
-#         hand = mpimg.imread(path + filename)
-#         hand = greyscale(hand)
-#         if i == 1:
-#             set = np.array(hand)
-#         else:  
-#             set = np.concatenate( ( set, np.array(hand) ), axis = 0 )
-#     set = set.reshape( i, 480, 640)
-#     print(path, 'set shape = ', set.shape)
-#     return set
+for truthFile in os.listdir(truthPath):
+    for kmeansFile in os.listdir(kmeansPath):
+        if(truthFile == kmeansFile):
+            print("Found a match with file: " + truthFile)
+            truthImage = mpimg.imread(truthPath + "\\" + truthFile)
+            kmeansImage = mpimg.imread(kmeansPath + "\\" + kmeansFile)
+            truePositive = 0
+            trueNegative = 0
+            falsePositive = 0
+            falseNegative = 0
+            truthErrors = 0
+            kmeansErrors = 0
+            totalPixels = 0
+            x = 0
+            y = 0
 
-# ### main
-# # png = read_img("png\\")
-# raw = read_img("..\\Robot Arm Pictures\\Originals")
-# print("--------------------------\n")
-# # png_feed = png.reshape(png.shape[0] * png.shape[1] * png.shape[2], 1) * 255.
-# rawFeed = raw.reshape(raw.shape[0] * raw.shape[1] * raw.shape[2], 1)
+            for row in truthImage:
+                for truthPixel in row:
+                    totalPixels += 1
+                    if(np.array_equal(truthPixel, [1.0, 1.0, 1.0, 1.0])):
+                        if(np.array_equal(truthPixel, kmeansImage[x][y])):
+                            truePositive += 1
+                        elif(np.array_equal(kmeansImage[x][y], [0.0, 0.0, 0.0, 1.0])):
+                            falseNegative +=1
+                        else:
+                            kmeansErrors += 1
+                    elif(np.array_equal(truthPixel, [0.0, 0.0, 0.0, 1.0])):
+                        if(np.array_equal(truthPixel, kmeansImage[x][y])):
+                            trueNegative += 1
+                        elif(np.array_equal(kmeansImage[x][y], [1.0, 1.0, 1.0, 1.0])):
+                            falsePositive +=1
+                        else:
+                            kmeansErrors += 1
+                    else:
+                        truthErrors += 1
+                    y += 1
+                y = 0
+                x += 1
 
-# # KMEANS
-# n_clusters = 2
-# kmeans = KMeans(n_clusters=n_clusters, random_state=0).fit(rawFeed)
-# labels = kmeans.labels_
-
-# # read a test
-# test = read_img("test\\")
-# test = test.reshape(480 * 640, 1)
-
-# # predict
-# result = kmeans.predict(test)
-# result = result.reshape(480, 640)
-# show_img(result)
+            print("Total pixels: " + str(totalPixels))
+            print("True positives: " + str(truePositive) + " at " + str(truePositive * 100 / totalPixels))
+            print("True negatives: " + str(trueNegative) + " at " + str(trueNegative * 100 / totalPixels))
+            print("False positives: " + str(falsePositive) + " at " + str(falsePositive * 100 / totalPixels))
+            print("False negatives: " + str(falseNegative) + " at " + str(falseNegative * 100 / totalPixels))
+            if(truthErrors > 0):
+                print("Truth errors: " + str(truthErrors))
+                print("Truth errors occur when a pixel in the truth image is not black or white.")
+            if(kmeansErrors > 0):
+                print("K-means errors: " + str(kmeansErrors))
+                print("K-means errors occur when a pixel in the k-means image is not black or white.")
