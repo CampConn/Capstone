@@ -42,4 +42,4 @@ with open('rectangles.csv', 'w', newline='') as csvFile:
             print("Truth errors: " + str(truthErrors))
         print('')
 
-        rectangleWriter.writerow([truthFile, x1, y1, x2, y2])
+        rectangleWriter.writerow([truthFile, y1, x1, y2, x2])
