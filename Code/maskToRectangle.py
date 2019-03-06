@@ -18,6 +18,8 @@ with open('rectangles.csv', 'w', newline='') as csvFile:
         y2 = 0
         truthErrors = 0
 
+        print("Processing " + truthFile + "...")
+
         for row in truthImage:
             for truthPixel in row:
                 if(np.array_equal(truthPixel, [1.0, 1.0, 1.0, 1.0])):
@@ -34,3 +36,9 @@ with open('rectangles.csv', 'w', newline='') as csvFile:
                 currentY += 1
             currentY = 0
             currentX += 1
+
+        if(truthErrors > 0):
+            # Truth errors occur when a pixel in the truth image is not black or white
+            print("Truth errors: " + str(truthErrors))
+        print('')
+
