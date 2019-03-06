@@ -55,9 +55,9 @@ for truthFile in os.listdir(truthPath):
                             kmeansErrors += 1
                     else:
                         truthErrors += 1
-                    y += 1
-                y = 0
-                x += 1
+                    x += 1
+                x = 0
+                y += 1
 
             print("Total pixels: " + str(totalPixels))
             print("True positives: " + str(truePositive) + " at " + str(truePositive * 100 / totalPixels))
