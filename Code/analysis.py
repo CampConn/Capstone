@@ -21,7 +21,8 @@ truthPath = "Robot Arm Pictures\\Photoshop Masks"
 kmeansPath = "Robot Arm Pictures\\K-means RGB Strawman"
 
 for truthFile in os.listdir(truthPath):
-    print("Trying file: " + truthFile)
+    fileIncrementor = 0
+    print("Trying file" + str(fileIncrementor) + ": " + truthFile)
     truthImage = mpimg.imread(truthPath + "\\" + truthFile)
     kmeansImage = mpimg.imread(kmeansPath + "\\" + truthFile)
     print("-----------------------------------------------")
@@ -72,3 +73,4 @@ for truthFile in os.listdir(truthPath):
         print("K-means errors: " + str(kmeansErrors))
         # print("K-means errors occur when a pixel in the k-means image is not black or white.")
     print("")
+    fileIncrementor += 1
