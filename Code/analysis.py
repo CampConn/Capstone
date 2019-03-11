@@ -18,14 +18,13 @@ import numpy as np                  # Mandatory array stuff
 # To do: Ensure output is clean for multiple files. (Would it be worth saving to a .txt?)
 
 truthPath = "Robot Arm Pictures\\Photoshop Masks"
-kmeansPath = "Robot Arm Pictures\\K-means Strawman"
+kmeansPath = "Robot Arm Pictures\\K-means RGB Strawman"
 
 for truthFile in os.listdir(truthPath):
-    for kmeansFile in os.listdir(kmeansPath):
-        if(truthFile == kmeansFile):
-            print("Found a match with file: " + truthFile)
+    print("Trying file: " + truthFile)
             truthImage = mpimg.imread(truthPath + "\\" + truthFile)
-            kmeansImage = mpimg.imread(kmeansPath + "\\" + kmeansFile)
+    kmeansImage = mpimg.imread(kmeansPath + "\\" + truthFile)
+    print("-----------------------------------------------")
             truePositive = 0
             trueNegative = 0
             falsePositive = 0
