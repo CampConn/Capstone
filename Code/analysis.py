@@ -25,6 +25,7 @@ for truthFile in os.listdir(truthPath):
     truthImage = mpimg.imread(truthPath + "\\" + truthFile)
     kmeansImage = mpimg.imread(kmeansPath + "\\" + truthFile)
     print("-----------------------------------------------")
+    
     truePositive = 0
     trueNegative = 0
     falsePositive = 0
