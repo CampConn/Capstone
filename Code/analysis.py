@@ -14,6 +14,8 @@ import numpy as np                  # Mandatory array stuff
 # False negative is when kmeans says black when truth says white.
 # Prints these four counters (and two error counters when necessary)
 
+# To do: Combine analysis scripts since a lot of functionality overlaps.
+
 truthPath = "Robot Arm Pictures\\Photoshop Masks"
 # kmeansPath = "Robot Arm Pictures\\K-means RGB Strawman"
 kmeansPath = "Robot Arm Pictures\\K-means HSV Strawman"
