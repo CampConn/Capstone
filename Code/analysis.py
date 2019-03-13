@@ -1,4 +1,5 @@
 import os                           # Important for file matching
+import csv                          # Handle CSV Stuff
 import matplotlib.image as mpimg    # Image reading
 import numpy as np                  # Mandatory array stuff
 
@@ -27,7 +28,7 @@ for truthFile in os.listdir(truthPath):
     print("-----------------------------------------------")
     truthImage = mpimg.imread(truthPath + "\\" + truthFile)
     kmeansImage = mpimg.imread(kmeansPath + "\\" + truthFile)
-    
+
     truePositive = 0
     trueNegative = 0
     falsePositive = 0
@@ -37,7 +38,7 @@ for truthFile in os.listdir(truthPath):
     totalPixels = 0
     x = 0
     y = 0
-
+    
     for row in truthImage:
         for truthPixel in row:
             totalPixels += 1
