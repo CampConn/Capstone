@@ -18,15 +18,13 @@ truthPath = "Robot Arm Pictures\\Photoshop Masks"
 # kmeansPath = "Robot Arm Pictures\\K-means RGB Strawman"
 kmeansPath = "Robot Arm Pictures\\K-means HSV Strawman"
 
-truthPath = "Robot Arm Pictures\\Photoshop Masks"
-kmeansPath = "Robot Arm Pictures\\K-means RGB Strawman"
+fileIncrementor = 1
 
 for truthFile in os.listdir(truthPath):
-    fileIncrementor = 0
-    print("Trying file" + str(fileIncrementor) + ": " + truthFile)
+    print("Trying file " + str(fileIncrementor) + ": " + truthFile)
+    print("-----------------------------------------------")
     truthImage = mpimg.imread(truthPath + "\\" + truthFile)
     kmeansImage = mpimg.imread(kmeansPath + "\\" + truthFile)
-    print("-----------------------------------------------")
     
     truePositive = 0
     trueNegative = 0
