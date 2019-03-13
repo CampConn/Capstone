@@ -14,8 +14,9 @@ import numpy as np                  # Mandatory array stuff
 # False negative is when kmeans says black when truth says white.
 # Prints these four counters (and two error counters when necessary)
 
-# To do: Save the coordinates of truth errors so files can be cleaned manually.
-# To do: Ensure output is clean for multiple files. (Would it be worth saving to a .txt?)
+truthPath = "Robot Arm Pictures\\Photoshop Masks"
+# kmeansPath = "Robot Arm Pictures\\K-means RGB Strawman"
+kmeansPath = "Robot Arm Pictures\\K-means HSV Strawman"
 
 truthPath = "Robot Arm Pictures\\Photoshop Masks"
 kmeansPath = "Robot Arm Pictures\\K-means RGB Strawman"
