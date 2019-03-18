@@ -78,3 +78,12 @@ def svmPredictionToMask(boolList, x1=0, y1=0, x2=639, y2=479):
 
     return mask
 
+### Main
+trainingImagePath = "Robot Arm Pictures\\Originals\\1548556410125876173.jpeg"
+trainingMaskPath = "Robot Arm Pictures\\Photoshop Masks\\1548556410125876173.png"
+svmMaskPath = "Robot Arm Pictures\\SVM Test Images\\1548556410125876173.png"
+
+print("Setting up images, x, and y without rectangle...")
+inputImage = mpimg.imread(trainingImagePath)
+inputMask = mpimg.imread(trainingMaskPath)
+print("Images completed.")
