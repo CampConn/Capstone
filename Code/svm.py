@@ -52,3 +52,29 @@ def pngToList(mask, x1=0, y1=0, x2=639, y2=479):
 
     return pixelList
 
+def svmPredictionToMask(boolList, x1=0, y1=0, x2=639, y2=479):
+    mask = []
+    boolListIndex = 0
+
+    for row in range(0, 640):
+        if(row < y1):
+            for column in range(0, 480):
+                mask[row][column].append([0, 0, 0])
+        elif(row > y2):
+            for column in range(0, 480):
+                mask[row][column].append([0, 0, 0])
+        else:
+            for column in range(0, 480):
+                if(column < x1):
+                    mask[row][column].append([0, 0, 0])
+                elif(column > x2):
+                    mask[row][column].append([0, 0, 0])
+                else:
+                    if(boolList[boolListIndex] == 0):
+                        mask[row][column].append([0, 0, 0])
+                    elif(boolList[boolListIndex] == 1):
+                        mask[row][column].append([255, 255, 255])
+                    boolListIndex += 1
+
+    return mask
+
