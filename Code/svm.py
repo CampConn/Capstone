@@ -41,3 +41,14 @@ def maskPngToBooleanList(mask, x1=0, y1=0, x2=639, y2=479):
 
     return boolList
 
+def pngToList(mask, x1=0, y1=0, x2=639, y2=479):
+# Original Line which may be faster (but I don't fully understand):
+# x = inputImage.reshape(307200, -1)
+    pixelList = []
+
+    for y in range(y1, (y2 + 1)):
+        for x in range(x1, (x2 + 1)):
+            pixelList.append(mask[y][x])
+
+    return pixelList
+
