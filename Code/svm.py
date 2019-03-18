@@ -87,3 +87,8 @@ print("Setting up images, x, and y without rectangle...")
 inputImage = mpimg.imread(trainingImagePath)
 inputMask = mpimg.imread(trainingMaskPath)
 print("Images completed.")
+x = pngToList(inputImage)
+print("X completed.")
+y = maskPngToBooleanList(inputMask)
+print("Y completed.")
+
