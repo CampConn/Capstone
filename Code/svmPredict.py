@@ -24,6 +24,9 @@ from sklearn import svm
 # print(clf.predict([[60, 120, 80]]))
 # >>> [0]
 
+# To do: Ensure SVM to prediction doesn't break.
+# Follow instructions as much as possible.
+
 def maskPngToBooleanList(mask, x1=0, y1=0, x2=639, y2=479):
     boolList = []
     truthErrors = 0
