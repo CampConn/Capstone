@@ -44,3 +44,33 @@ def pngToList(mask, x1=0, y1=0, x2=639, y2=479):
 
     return pixelList
 
+### Main
+trainingImagePath = "Robot Arm Pictures\\Originals\\1548556410125876173.jpeg"
+trainingMaskPath = "Robot Arm Pictures\\Photoshop Masks\\1548556410125876173.png"
+rectangleCSVPath = "Data\\rectangles.csv"
+modelOutputPath = "Data\\svmTestModel.joblib"
+
+print("Using CSV to get best rectangle.")
+rectangle = smallestRectangle(rectangleCSVPath)
+x1 = int(rectangle[1])
+y1 = int(rectangle[2])
+x2 = int(rectangle[3])
+y2 = int(rectangle[4])
+print("Setting up images, x, and y with rectangle.")
+inputImage = mpimg.imread(trainingImagePath)
+inputMask = mpimg.imread(trainingMaskPath)
+print("Images completed.")
+x = pngToList(inputImage, x1, y1, x2, y2)
+print("X completed.")
+y = maskPngToBooleanList(inputMask, x1, y1, x2, y2)
+print("Y completed.")
+
+print("Setting up SVM.")
+# To do: Do an accuracy comparison using 1548556664009561173.png
+clf = svm.SVC(gamma='auto')
+# clf = svm.SVC(gamma='scale')
+print("SVM gamma set to 'auto'.")
+clf.fit(x, y)
+print("SVM fitted. Saving SVM model for repeated use.")
+dump(clf, modelOutputPath)
+print("SVM Model saved.")
