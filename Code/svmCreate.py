@@ -19,30 +19,34 @@ def smallestRectangle(rectangleCSVPath):
         return rectangleReader[20]
 
 # Note, this function can be optimized for nearest neighbor groupings.
+def jpegToList(mask, x1=0, y1=0, x2=639, y2=479):
+    pixelList = np.array([], dtype=np.uint8).reshape(0, 3)
+
+    for y in range(y1, (y2 + 1)):
+        for x in range(x1, (x2 + 1)):
+            # Helpful data debug statement
+            # print("Mask: " + str(mask[y][x]) + " at x[" + str(x) + "] y[" + str(y) + "].")
+            pixelList = np.concatenate((pixelList, np.array([mask[y][x]])), axis=0)
+
+    return pixelList
+
 def maskPngToBooleanList(mask, x1=0, y1=0, x2=639, y2=479):
-    boolList = []
+    boolList = np.array([], dtype=np.uint8)
     truthErrors = 0
 
     for y in range(y1, (y2 + 1)):
         for x in range(x1, (x2 + 1)):
+            # Helpful data debug statement
+            # print("Mask: " + str(mask[y][x]) + " at x[" + str(x) + "] y[" + str(y) + "].")
             if(np.array_equal(mask[y][x], [1.0, 1.0, 1.0, 1.0])):
-                boolList.append(1)
+                boolList = np.append(boolList, 1)
             elif(np.array_equal(mask[y][x], [0.0, 0.0, 0.0, 1.0])):
-                boolList.append(0)
+                boolList = np.append(boolList, 0)
             else:
                 truthErrors += 1
-                boolList.append(0)
+                boolList = np.append(boolList, 0)
 
     return boolList
-
-def pngToList(mask, x1=0, y1=0, x2=639, y2=479):
-    pixelList = []
-
-    for y in range(y1, (y2 + 1)):
-        for x in range(x1, (x2 + 1)):
-            pixelList.append(mask[y][x])
-
-    return pixelList
 
 ### Main
 trainingImagePath = "Robot Arm Pictures\\Originals\\1548556410125876173.jpeg"
@@ -60,11 +64,15 @@ print("Setting up images, x, and y with rectangle.")
 inputImage = mpimg.imread(trainingImagePath)
 inputMask = mpimg.imread(trainingMaskPath)
 print("Images completed.")
-x = pngToList(inputImage, x1, y1, x2, y2)
+x = jpegToList(inputImage, x1, y1, x2, y2)
 print("X completed.")
 y = maskPngToBooleanList(inputMask, x1, y1, x2, y2)
 print("Y completed.")
-
+# Helpful data debug statements
+# print("X: " + str(x))
+# print("Y: " + str(y))
+# print("X len: " + str(len(x)))
+# print("Y len: " + str(len(y)))
 print("Setting up SVM.")
 # To do: Do an accuracy comparison using 1548556664009561173.png
 clf = svm.SVC(gamma='auto')
