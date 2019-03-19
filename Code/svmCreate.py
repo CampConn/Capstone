@@ -49,20 +49,22 @@ def maskPngToBooleanList(mask, x1=0, y1=0, x2=639, y2=479):
     return boolList
 
 ### Main
-trainingImagePath = "Robot Arm Pictures\\Originals\\1548556410125876173.jpeg"
-trainingMaskPath = "Robot Arm Pictures\\Photoshop Masks\\1548556410125876173.png"
+trainingImagePath = "Robot Arm Pictures\\Originals"
+trainingMaskPath = "Robot Arm Pictures\\Photoshop Masks"
 rectangleCSVPath = "Data\\rectangles.csv"
 modelOutputPath = "Data\\svmTestModel.joblib"
 
 print("Using CSV to get best rectangle.")
 rectangle = smallestRectangle(rectangleCSVPath)
+pngFile = rectangle[0]
+jpegFile = pngFile.replace("png", "jpeg")
 x1 = int(rectangle[1])
 y1 = int(rectangle[2])
 x2 = int(rectangle[3])
 y2 = int(rectangle[4])
 print("Setting up images, x, and y with rectangle.")
-inputImage = mpimg.imread(trainingImagePath)
-inputMask = mpimg.imread(trainingMaskPath)
+inputImage = mpimg.imread(trainingImagePath + "\\" + jpegFile)
+inputMask = mpimg.imread(trainingMaskPath + "\\" + pngFile)
 print("Images completed.")
 x = jpegToList(inputImage, x1, y1, x2, y2)
 print("X completed.")
