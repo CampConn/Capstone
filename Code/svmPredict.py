@@ -12,34 +12,15 @@ def getRectangles(rectangleCSVPath):
 
         return rectangleReader
 
-# To do: Ensure SVM to prediction doesn't break.
-# Follow instructions as much as possible.
-
-def maskPngToBooleanList(mask, x1=0, y1=0, x2=639, y2=479):
-    boolList = []
-    truthErrors = 0
+def jpegToList(mask, x1=0, y1=0, x2=639, y2=479):
+    pixelList = np.array([], dtype=np.uint8).reshape(0, 3)
 
     for y in range(y1, (y2 + 1)):
         for x in range(x1, (x2 + 1)):
-            if(np.array_equal(mask[y][x], [1.0, 1.0, 1.0, 1.0])):
-                boolList.append(1)
-            elif(np.array_equal(mask[y][x], [0.0, 0.0, 0.0, 1.0])):
-                boolList.append(0)
-            else:
-                truthErrors += 1
-                boolList.append(0)
-                # print("Truth Error Coords | Row: " + str(x) + " | " + "Column: " + str(y))
-
-    return boolList
-
-def pngToList(mask, x1=0, y1=0, x2=639, y2=479):
-# Original Line which may be faster (but I don't fully understand):
-# x = inputImage.reshape(307200, -1)
-    pixelList = []
-
-    for y in range(y1, (y2 + 1)):
-        for x in range(x1, (x2 + 1)):
-            pixelList.append(mask[y][x])
+            # Helpful data debug statement
+            # print("Mask: " + str(mask[y][x]) + " at x[" + str(x) + "] y[" + str(y) + "].")
+            pixelList = np.concatenate(
+                (pixelList, np.array([mask[y][x]])), axis=0)
 
     return pixelList
 
