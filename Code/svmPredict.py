@@ -77,9 +77,11 @@ for rectangle in rectangleList:
     inputImage = mpimg.imread(trainingImagePath + "\\" + jpegFile)
     croppedImage = jpegToList(inputImage, x1, y1, x2, y2)
     print("Cropping completed. Making predictions...")
+    predictedMaskBoolList = clf.predict(croppedImage)
 print("Predictions complete. Converting to a mask.png.")
-predictedMask = svmPredictionToMask(predictedMaskBoolList)
+    predictedMask = svmPredictionToMask(predictedMaskBoolList, x1, y1, x2, y2)
 print("Image ready to be saved. Saving now.")
+    mpimg.imsave((svmMaskPath + "\\" + pngFile), predictedMask)
     print("Image saved.")
     print()
     fileIterator += 1
