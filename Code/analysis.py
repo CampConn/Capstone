@@ -1,7 +1,5 @@
-import os                           # Important for file matching
-import csv                          # Handle CSV Stuff
+import csv                          # CSV handling
 import matplotlib.image as mpimg    # Image reading
-import numpy as np                  # Mandatory array stuff
 
 # This script must be given two directories.
 # When given two directories it can compare all images of the same name.
