@@ -29,7 +29,7 @@ def performAnalysisOnImages(truthImage, predictionsImage, resolution=307200, x1=
     totalPixels = 0
     x = 0
     y = 0
-    
+
     for y in range(y1, (y2 + 1)):
         for x in range(x1, (x2 + 1)):
             totalPixels += 1
