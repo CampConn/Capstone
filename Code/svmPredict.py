@@ -50,13 +50,6 @@ def svmPredictionToMask(boolList, x1=0, y1=0, x2=639, y2=479):
                     boolListIndex += 1
         mask.append(maskRow)
 
-    # print("Number of Bools: " + str(boolListIndex))
-    # for row in range(0, 480):
-    #     maskRow = []
-    #     for column in range(0, 640):
-    #         maskRow.append([0., 0., 0.])
-    #     mask.append(maskRow)
-
     return mask
 
 ### Main
@@ -85,9 +78,9 @@ for rectangle in rectangleList:
     croppedImage = jpegToList(inputImage, x1, y1, x2, y2)
     print("Cropping completed. Making predictions...")
     predictedMaskBoolList = clf.predict(croppedImage)
-print("Predictions complete. Converting to a mask.png.")
+    print("Predictions complete. Converting to a mask.png.")
     predictedMask = svmPredictionToMask(predictedMaskBoolList, x1, y1, x2, y2)
-print("Image ready to be saved. Saving now.")
+    print("Image ready to be saved. Saving now.")
     mpimg.imsave((svmMaskPath + "\\" + pngFile), predictedMask)
     print("Image saved.")
     print()
