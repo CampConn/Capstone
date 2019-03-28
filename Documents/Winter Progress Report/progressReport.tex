@@ -59,19 +59,26 @@ We are attempting four different methods to see which one works best and will su
 
 \noindent
 \section{Progress}
-Due to a serious delay,
-we were unable to begin working on this project until we received images of the robot arm during week 6.
-Even after that, we were on unable to construct the 
+Due to a serious delay, we were unable to begin working on this project until we received images of the robot arm during week 6.
+Even after that, we were on unable to implement methods that required nearest neighbor groupings until week 8.
+However, despite the short amount of time, for the beta, we've implemented a functionally completed K-means script, a basic support vector machine script, a custom neural network (still working towards a completed basic implementation), and some data processing scripts.
 
 \subsection{Support Vector Machine}
-After a long delay, we finally have enough data to complete our main goals, though in a less than satisfying manner.
-We have nearly implemented the straw man method to satisfaction.
-It is good enough for a demo but not good enough to function as a real method.
+For beta level functionality, the support vector machine has been implemented on a basic level.
+It still needs to incorporate nearest neighbor groupings and possibly use a different setup.
+However, when given an input directory and an output directory, it can create masks based on input images.
+
+\subsection{Supporting Data Processing Scripts}
+There are two main supporting scripts.
+The first analyzes a two masks and outputs the differences.
+The differences can be true positives or negatives, or false positives or negatives.
+The more true positives and negatives, the more accurately the implemented mask was created.
+The second supporting script simulates a specification change in which we'll only be checking part of the image with arm and ignoring the rest.
 
 \section{Remaining Work}
-We have to analyze the most optimal nearest neighbor groupings which will be the stepping stone needed to do the other three methods.
-We will be able to perform a decent analysis once we have the second method completed.
-This will likely allow us to mostly finish our poster.
+Of the three implementations, the custom neural network needs a completed basic implementation.
+The support vector machine will require nearest neighbor incorporation and a much more intensively trained model.
+K-means also requires nearest neighbor incorporation as well as some quality of life changes.
 
 \section{Obstacles and Solutions}
 \subsection{Waiting Data}
@@ -103,6 +110,14 @@ When the image set was received and the sample images were labeled, we started t
 
 \subsection{Neural Network}
 For the custom neural network implementation, the Fast Artificial Neural Network (FANN) library was used. The algorithms for reading an image for training the network, then implementing the network over an image is in place, but there are a few problems. For one, the FANN library wants to run on a different architecture than the default version of OpenCV (FANN wants to be built on an x86 platform, while OpenCV wants x64). As a result, the functions that use these need to be on separate executables that communicate through files. Connor intends to fix this over Spring Break, e.  
+
+\subsection{Support Vector Machine}
+The current main issue with the support vector machine is training it.
+When given a single 640x480 image, training the model can take four to five hours.
+There is no clear way to optimize this so that it can run more quickly.
+Though, some attempts will made over Spring break.
+Next, it also needs to run with knowledge of nearest neighbors.
+That too will be implemented over Spring break.
 
 \section{Part of Code}
 \subsection{Store Images}
@@ -194,10 +209,9 @@ This would have been a file with all of the arm poses associated with the 2,800 
 Instead, we are now using the timestamp of each frame within the video.
 Unfortunately, this will likely prove to be ineffective in practice as we won't have a nearest neighbor parser that can run in real time which could have significantly boosted accuracy.
 Despite this, we'll implement a k-means clustering method with nearest neighbor and try to optimize the combination.
-It's possible that there won't be any improvement, in which case, our last two implementations will be far more simple.
-One will be a support vector machine.
-The last will be making our own convolutional neural network.
-
+It's possible that there won't be any improvement.
+The last two implementations need more work in order to be fully completed.
+We've also received some specification changes for our implementation with K-means which has been implemented.
 
 
 \end{document}
