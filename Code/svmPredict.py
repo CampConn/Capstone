@@ -50,6 +50,13 @@ def svmPredictionToMask(boolList, x1=0, y1=0, x2=639, y2=479):
                     boolListIndex += 1
         mask.append(maskRow)
 
+    # print("Number of Bools: " + str(boolListIndex))
+    # for row in range(0, 480):
+    #     maskRow = []
+    #     for column in range(0, 640):
+    #         maskRow.append([0., 0., 0.])
+    #     mask.append(maskRow)
+
     return mask
 
 ### Main
