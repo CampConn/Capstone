@@ -65,6 +65,8 @@ print("Loading up SVM.")
 clf = load(modelOutputPath)
 print()
 
+for rectangle in rectangleList:
+    print("Working on file " + str(fileIterator) + ".")
     pngFile = rectangle[0]
     jpegFile = pngFile.replace("png", "jpeg")
     x1 = int(rectangle[1])
@@ -78,5 +80,6 @@ print()
 print("Predictions complete. Converting to a mask.png.")
 predictedMask = svmPredictionToMask(predictedMaskBoolList)
 print("Image ready to be saved. Saving now.")
-mpimg.imsave(svmMaskPath, predictedMask)
-print("Image saved. The svm.py script has completed.")
+    print("Image saved.")
+    print()
+    fileIterator += 1
