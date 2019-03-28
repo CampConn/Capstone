@@ -59,14 +59,11 @@ rectangleCSVPath = "Data\\rectangles.csv"
 modelOutputPath = "Data\\svmTestModel.joblib"
 fileIterator = 1
 
-print("Setting up images, x, and y without rectangle...")
-inputImage = mpimg.imread(trainingImagePath)
-inputMask = mpimg.imread(trainingMaskPath)
-print("Images completed.")
-x = pngToList(inputImage)
-print("X completed.")
-y = maskPngToBooleanList(inputMask)
-print("Y completed.")
+print("Grabbing all rectangles from CSV.")
+rectangleList = getRectangles(rectangleCSVPath)
+print("Loading up SVM.")
+clf = load(modelOutputPath)
+print()
 
 print("Setting up SVM.")
 clf = svm.SVC(gamma='auto')
