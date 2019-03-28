@@ -53,11 +53,17 @@ def performAnalysisOnImages(truthImage, predictionsImage, resolution=307200, x1=
 
     printResults(totalPixels, resolution, truePositive, trueNegative, falsePositive, falseNegative, truthErrors, predictionErrors)
 
+def printResults(totalPixels, resolution, truePositive, trueNegative, falsePositive, falseNegative, truthErrors, predictionErrors):
+        print("Rectangle pixels: " + str(totalPixels) + " which is " + str(totalPixels * 100 / resolution) + "% of the image.")
+        print("Rectangle true positives: " + str(truePositive) + " at " + str(truePositive * 100 / totalPixels))
+        print("Rectangle true negatives: " + str(trueNegative) + " at " + str(trueNegative * 100 / totalPixels))
+        print("Rectangle false positives: " + str(falsePositive) + " at " + str(falsePositive * 100 / totalPixels))
+        print("Rectangle false negatives: " + str(falseNegative) + " at " + str(falseNegative * 100 / totalPixels))
     if(truthErrors > 0):
         print("Truth errors: " + str(truthErrors))
         # print("Truth errors occur when a pixel in the truth image is not black or white.")
-    if(kmeansErrors > 0):
-        print("K-means errors: " + str(kmeansErrors))
+    if(predictionErrors > 0):
+        print("Prediction errors: " + str(predictionErrors))
         # print("K-means errors occur when a pixel in the k-means image is not black or white.")
     print("")
     fileIncrementor += 1
