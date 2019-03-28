@@ -12,11 +12,12 @@ def getPixelValue(pixel):
         else:
             return -1.
 
-# To do: Combine analysis scripts since a lot of functionality overlaps.
+def getRectangles(rectangleCSVPath):
+    with open(rectangleCSVPath, newline='') as csvFile:
+        rectangleReader = list(csv.reader(
+            csvFile, delimiter=',', quotechar='|'))
 
-truthPath = "Robot Arm Pictures\\Photoshop Masks"
-# kmeansPath = "Robot Arm Pictures\\K-means RGB Strawman"
-kmeansPath = "Robot Arm Pictures\\K-means HSV Strawman"
+        return rectangleReader
 
 fileIncrementor = 1
 
