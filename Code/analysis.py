@@ -1,17 +1,16 @@
 import csv                          # CSV handling
 import matplotlib.image as mpimg    # Image reading
 
-# This script must be given two directories.
-# When given two directories it can compare all images of the same name.
-# Read image 1 from directory A, image 2 from directory B
-# Image 1 is "truth"
-# Image 2 is "kmeans"
-# Compare truth and kmeans pixel by pixel
-# True positive is when they agree on white.
-# True negative is when they agree on black.
-# False positive is when kmeans says white when truth says black.
-# False negative is when kmeans says black when truth says white.
-# Prints these four counters (and two error counters when necessary)
+def getPixelValue(pixel):
+    if(str(pixel).find("[") == -1):
+        return pixel
+    else:
+        if((pixel[0] == 0.) and (pixel[1] == 0.) and (pixel[2] == 0.)):
+            return 0.
+        elif((pixel[0] == 1.) and (pixel[1] == 1.) and (pixel[2] == 1.)):
+            return 1.
+        else:
+            return -1.
 
 # To do: Combine analysis scripts since a lot of functionality overlaps.
 
