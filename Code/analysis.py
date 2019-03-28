@@ -54,6 +54,7 @@ def performAnalysisOnImages(truthImage, predictionsImage, resolution=307200, x1=
     printResults(totalPixels, resolution, truePositive, trueNegative, falsePositive, falseNegative, truthErrors, predictionErrors)
 
 def printResults(totalPixels, resolution, truePositive, trueNegative, falsePositive, falseNegative, truthErrors, predictionErrors):
+    noRectangleTrueNegative = trueNegative + (resolution - totalPixels)
     print("Total resolution pixels: " + str(resolution))
     print("True positives: " + str(truePositive) + " at " + str(truePositive * 100 / resolution))
     print("True negatives: " + str(noRectangleTrueNegative) + " at " + str(noRectangleTrueNegative * 100 / resolution))
