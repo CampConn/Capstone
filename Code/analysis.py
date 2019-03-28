@@ -73,4 +73,29 @@ def printResults(totalPixels, resolution, truePositive, trueNegative, falsePosit
         print("Prediction errors: " + str(predictionErrors))
         # print("K-means errors occur when a pixel in the k-means image is not black or white.")
     print("")
+
+### Main
+truthPath = "Robot Arm Pictures\\Photoshop Masks"
+implementationMaskPath = "Robot Arm Pictures\\K-means RGB Strawman"
+# implementationMaskPath = "Robot Arm Pictures\\K-means HSV Strawman"
+# implementationMaskPath = "Robot Arm Pictures\\SVM Test Images"
+rectangleCSVPath = "Data\\rectangles.csv"
+
+rectangleList = getRectangles(rectangleCSVPath)
+fileIncrementor = 1
+
+for rectangle in rectangleList:
+    truthFile = rectangle[0]
+    x1 = int(rectangle[1])
+    y1 = int(rectangle[2])
+    x2 = int(rectangle[3])
+    y2 = int(rectangle[4])
+
+    print("Trying file " + str(fileIncrementor) + ": " + truthFile)
+    print("-----------------------------------------------")
+    truthImage = mpimg.imread(truthPath + "\\" + truthFile)
+    implementationMask = mpimg.imread(implementationMaskPath + "\\" + truthFile)
+
+    performAnalysisOnImages(truthImage, implementationMask, x1=x1, y1=y1, x2=x2, y2=y2)
+
     fileIncrementor += 1
