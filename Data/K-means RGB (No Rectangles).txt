@@ -1,0 +1,167 @@
+Trying file 1: 1548556271154699454.png
+-----------------------------------------------
+Total pixels: 307200
+True positives: 21337 at 6.945638020833333
+True negatives: 156395 at 50.909830729166664
+False positives: 129376 at 42.114583333333336
+False negatives: 92 at 0.029947916666666668
+
+Trying file 2: 1548556289651339204.png
+-----------------------------------------------
+Total pixels: 307200
+True positives: 24281 at 7.903971354166667
+True negatives: 149731 at 48.740559895833336
+False positives: 133087 at 43.322591145833336
+False negatives: 101 at 0.032877604166666664
+
+Trying file 3: 1548556310146099579.png
+-----------------------------------------------
+Total pixels: 307200
+True positives: 26193 at 8.5263671875
+True negatives: 149911 at 48.799153645833336
+False positives: 130635 at 42.5244140625
+False negatives: 461 at 0.15006510416666666
+
+Trying file 4: 1548556330309158860.png
+-----------------------------------------------
+Total pixels: 307200
+True positives: 26997 at 8.7880859375
+True negatives: 149893 at 48.793294270833336
+False positives: 130205 at 42.384440104166664
+False negatives: 105 at 0.0341796875
+
+Trying file 5: 1548556350302725798.png
+-----------------------------------------------
+Total pixels: 307200
+True positives: 29249 at 9.521158854166666
+True negatives: 147070 at 47.874348958333336
+False positives: 128938 at 41.972005208333336
+False negatives: 1943 at 0.6324869791666666
+
+Trying file 6: 1548556369967022735.png
+-----------------------------------------------
+Total pixels: 307200
+True positives: 30900 at 10.05859375
+True negatives: 144959 at 47.187174479166664
+False positives: 129890 at 42.281901041666664
+False negatives: 1451 at 0.4723307291666667
+
+Trying file 7: 1548556389300665392.png
+-----------------------------------------------
+Total pixels: 307200
+True positives: 30863 at 10.046549479166666
+True negatives: 150189 at 48.8896484375
+False positives: 125974 at 41.007161458333336
+False negatives: 174 at 0.056640625
+
+Trying file 8: 1548556410125876173.png
+-----------------------------------------------
+Total pixels: 307200
+True positives: 38731 at 12.607747395833334
+True negatives: 143730 at 46.787109375
+False positives: 124215 at 40.4345703125
+False negatives: 524 at 0.17057291666666666
+
+Trying file 9: 1548556429279806923.png
+-----------------------------------------------
+Total pixels: 307200
+True positives: 51195 at 16.6650390625
+True negatives: 130299 at 42.4150390625
+False positives: 125045 at 40.704752604166664
+False negatives: 661 at 0.21516927083333334
+
+Trying file 10: 1548556448930899641.png
+-----------------------------------------------
+Total pixels: 307200
+True positives: 36950 at 12.027994791666666
+True negatives: 141651 at 46.1103515625
+False positives: 127901 at 41.634440104166664
+False negatives: 698 at 0.22721354166666666
+
+Trying file 11: 1548556469417020610.png
+-----------------------------------------------
+Total pixels: 307200
+True positives: 38844 at 12.64453125
+True negatives: 141139 at 45.943684895833336
+False positives: 126573 at 41.2021484375
+False negatives: 644 at 0.20963541666666666
+
+Trying file 12: 1548556489240197048.png
+-----------------------------------------------
+Total pixels: 307200
+True positives: 32999 at 10.741861979166666
+True negatives: 145517 at 47.368815104166664
+False positives: 127615 at 41.541341145833336
+False negatives: 1069 at 0.3479817708333333
+
+Trying file 13: 1548556507394291860.png
+-----------------------------------------------
+Total pixels: 307200
+True positives: 36964 at 12.032552083333334
+True negatives: 144377 at 46.997721354166664
+False positives: 125182 at 40.749348958333336
+False negatives: 677 at 0.22037760416666666
+
+Trying file 14: 1548556528218523204.png
+-----------------------------------------------
+Total pixels: 307200
+True positives: 43013 at 14.001627604166666
+True negatives: 137346 at 44.708984375
+False positives: 125598 at 40.884765625
+False negatives: 1243 at 0.4046223958333333
+
+Trying file 15: 1548556547879731673.png
+-----------------------------------------------
+Total pixels: 307200
+True positives: 63488 at 20.666666666666668
+True negatives: 127719 at 41.5751953125
+False positives: 115191 at 37.4970703125
+False negatives: 802 at 0.2610677083333333
+
+Trying file 16: 1548556568372283485.png
+-----------------------------------------------
+Total pixels: 307200
+True positives: 24855 at 8.0908203125
+True negatives: 153068 at 49.826822916666664
+False positives: 129047 at 42.007486979166664
+False negatives: 230 at 0.07486979166666667
+
+Trying file 17: 1548556588201674016.png
+-----------------------------------------------
+Total pixels: 307200
+True positives: 21949 at 7.144856770833333
+True negatives: 155743 at 50.697591145833336
+False positives: 129364 at 42.110677083333336
+False negatives: 144 at 0.046875
+
+Trying file 18: 1548556608028449048.png
+-----------------------------------------------
+Total pixels: 307200
+True positives: 22372 at 7.282552083333333
+True negatives: 155288 at 50.549479166666664
+False positives: 129433 at 42.133138020833336
+False negatives: 107 at 0.034830729166666664
+
+Trying file 19: 1548556628517146798.png
+-----------------------------------------------
+Total pixels: 307200
+True positives: 14804 at 4.819010416666667
+True negatives: 159082 at 51.784505208333336
+False positives: 133205 at 43.361002604166664
+False negatives: 109 at 0.035481770833333336
+
+Trying file 20: 1548556646848134017.png
+-----------------------------------------------
+Total pixels: 307200
+True positives: 44604 at 14.51953125
+True negatives: 142009 at 46.226888020833336
+False positives: 120305 at 39.161783854166664
+False negatives: 282 at 0.091796875
+
+Trying file 21: 1548556664009561173.png
+-----------------------------------------------
+Total pixels: 307200
+True positives: 14696 at 4.783854166666667
+True negatives: 161501 at 52.571940104166664
+False positives: 130895 at 42.609049479166664
+False negatives: 108 at 0.03515625

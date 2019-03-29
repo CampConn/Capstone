@@ -1,0 +1,272 @@
+Trying file 1: 1548556271154699454.png
+-----------------------------------------------
+Total resolution pixels: 307200
+True positives: 21267 at 6.9228515625
+True negatives: 267009 at 86.9169921875
+False positives: 18832 at 6.130208333333333
+False negatives: 92 at 0.029947916666666668
+Rectangle pixels: 43400 which is 14.127604166666666% of the image.
+Rectangle true positives: 21267 at 49.00230414746544
+Rectangle true negatives: 3209 at 7.394009216589862
+Rectangle false positives: 18832 at 43.39170506912443
+Rectangle false negatives: 92 at 0.2119815668202765
+
+Trying file 2: 1548556289651339204.png
+-----------------------------------------------
+Total resolution pixels: 307200
+True positives: 24225 at 7.8857421875
+True negatives: 242410 at 78.90950520833333
+False positives: 40408 at 13.153645833333334
+False negatives: 157 at 0.051106770833333336
+Rectangle pixels: 69498 which is 22.623046875% of the image.
+Rectangle true positives: 24225 at 34.85711819045152
+Rectangle true negatives: 4708 at 6.774295663184552
+Rectangle false positives: 40408 at 58.14268036490259
+Rectangle false negatives: 157 at 0.22590578146133702
+
+Trying file 3: 1548556310146099579.png
+-----------------------------------------------
+Total resolution pixels: 307200
+True positives: 26263 at 8.549153645833334
+True negatives: 259742 at 84.55143229166667
+False positives: 20883 at 6.7978515625
+False negatives: 312 at 0.1015625
+Rectangle pixels: 52640 which is 17.135416666666668% of the image.
+Rectangle true positives: 26263 at 49.891717325227965
+Rectangle true negatives: 5182 at 9.844224924012158
+Rectangle false positives: 20883 at 39.671352583586625
+Rectangle false negatives: 312 at 0.5927051671732523
+
+Trying file 4: 1548556330309158860.png
+-----------------------------------------------
+Total resolution pixels: 307200
+True positives: 26944 at 8.770833333333334
+True negatives: 248220 at 80.80078125
+False positives: 31914 at 10.388671875
+False negatives: 122 at 0.039713541666666664
+Rectangle pixels: 70228 which is 22.860677083333332% of the image.
+Rectangle true positives: 26944 at 38.3664635188244
+Rectangle true negatives: 11248 at 16.016403713618498
+Rectangle false positives: 31914 at 45.44341288375007
+Rectangle false negatives: 122 at 0.17371988380702855
+
+Trying file 5: 1548556350302725798.png
+-----------------------------------------------
+Total resolution pixels: 307200
+True positives: 30270 at 9.853515625
+True negatives: 235048 at 76.51302083333333
+False positives: 41064 at 13.3671875
+False negatives: 818 at 0.2662760416666667
+Rectangle pixels: 79680 which is 25.9375% of the image.
+Rectangle true positives: 30270 at 37.9894578313253
+Rectangle true negatives: 7528 at 9.447791164658634
+Rectangle false positives: 41064 at 51.536144578313255
+Rectangle false negatives: 818 at 1.0266064257028114
+
+Trying file 6: 1548556369967022735.png
+-----------------------------------------------
+Total resolution pixels: 307200
+True positives: 31603 at 10.287434895833334
+True negatives: 233217 at 75.9169921875
+False positives: 41736 at 13.5859375
+False negatives: 644 at 0.20963541666666666
+Rectangle pixels: 95073 which is 30.9482421875% of the image.
+Rectangle true positives: 31603 at 33.24077287978711
+Rectangle true negatives: 21090 at 22.182954151020795
+Rectangle false positives: 41736 at 43.89889874096747
+Rectangle false negatives: 644 at 0.6773742282246273
+
+Trying file 7: 1548556389300665392.png
+-----------------------------------------------
+Total resolution pixels: 307200
+True positives: 30859 at 10.045247395833334
+True negatives: 196283 at 63.894205729166664
+False positives: 79918 at 26.014973958333332
+False negatives: 140 at 0.045572916666666664
+Rectangle pixels: 138782 which is 45.176432291666664% of the image.
+Rectangle true positives: 30859 at 22.235592511997233
+Rectangle true negatives: 27865 at 20.078252222910752
+Rectangle false positives: 79918 at 57.58527762966379
+Rectangle false negatives: 140 at 0.10087763542822556
+
+Trying file 8: 1548556410125876173.png
+-----------------------------------------------
+Total resolution pixels: 307200
+True positives: 38605 at 12.566731770833334
+True negatives: 205077 at 66.7568359375
+False positives: 62868 at 20.46484375
+False negatives: 650 at 0.21158854166666666
+Rectangle pixels: 119070 which is 38.759765625% of the image.
+Rectangle true positives: 38605 at 32.422104644326865
+Rectangle true negatives: 16947 at 14.232804232804233
+Rectangle false positives: 62868 at 52.799193751574705
+Rectangle false negatives: 650 at 0.5458973712941967
+
+Trying file 9: 1548556429279806923.png
+-----------------------------------------------
+Total resolution pixels: 307200
+True positives: 51105 at 16.6357421875
+True negatives: 157255 at 51.189778645833336
+False positives: 98089 at 31.930013020833332
+False negatives: 751 at 0.24446614583333334
+Rectangle pixels: 156933 which is 51.0849609375% of the image.
+Rectangle true positives: 51105 at 32.56485251667909
+Rectangle true negatives: 6988 at 4.452855677263545
+Rectangle false positives: 98089 at 62.503743635819106
+Rectangle false negatives: 751 at 0.4785481702382545
+
+Trying file 10: 1548556448930899641.png
+-----------------------------------------------
+Total resolution pixels: 307200
+True positives: 37388 at 12.170572916666666
+True negatives: 205181 at 66.79069010416667
+False positives: 64371 at 20.9541015625
+False negatives: 260 at 0.08463541666666667
+Rectangle pixels: 104200 which is 33.919270833333336% of the image.
+Rectangle true positives: 37388 at 35.880998080614205
+Rectangle true negatives: 2181 at 2.0930902111324374
+Rectangle false positives: 64371 at 61.77639155470249
+Rectangle false negatives: 260 at 0.2495201535508637
+
+Trying file 11: 1548556469417020610.png
+-----------------------------------------------
+Total resolution pixels: 307200
+True positives: 39119 at 12.734049479166666
+True negatives: 228104 at 74.25260416666667
+False positives: 39608 at 12.893229166666666
+False negatives: 369 at 0.1201171875
+Rectangle pixels: 81081 which is 26.3935546875% of the image.
+Rectangle true positives: 39119 at 48.24681491348158
+Rectangle true negatives: 1985 at 2.4481691148357814
+Rectangle false positives: 39608 at 48.849915516582186
+Rectangle false negatives: 369 at 0.4551004551004551
+
+Trying file 12: 1548556489240197048.png
+-----------------------------------------------
+Total resolution pixels: 307200
+True positives: 33721 at 10.976888020833334
+True negatives: 254520 at 82.8515625
+False positives: 18613 at 6.058919270833333
+False negatives: 346 at 0.11263020833333333
+Rectangle pixels: 54051 which is 17.5947265625% of the image.
+Rectangle true positives: 33721 at 62.387374886681094
+Rectangle true negatives: 1371 at 2.5364933118721207
+Rectangle false positives: 18613 at 34.43599563375331
+Rectangle false negatives: 346 at 0.6401361676934747
+
+Trying file 13: 1548556507394291860.png
+-----------------------------------------------
+Total resolution pixels: 307200
+True positives: 37237 at 12.121419270833334
+True negatives: 230605 at 75.06673177083333
+False positives: 38954 at 12.680338541666666
+False negatives: 404 at 0.13151041666666666
+Rectangle pixels: 79990 which is 26.038411458333332% of the image.
+Rectangle true positives: 37237 at 46.55206900862608
+Rectangle true negatives: 3395 at 4.244280535066883
+Rectangle false positives: 38954 at 48.698587323415424
+Rectangle false negatives: 404 at 0.5050631328916114
+
+Trying file 14: 1548556528218523204.png
+-----------------------------------------------
+Total resolution pixels: 307200
+True positives: 43566 at 14.181640625
+True negatives: 241536 at 78.625
+False positives: 21408 at 6.96875
+False negatives: 690 at 0.224609375
+Rectangle pixels: 71371 which is 23.232747395833332% of the image.
+Rectangle true positives: 43566 at 61.041599529220555
+Rectangle true negatives: 5707 at 7.9962449734486
+Rectangle false positives: 21408 at 29.99537627327626
+Rectangle false negatives: 690 at 0.966779224054588
+
+Trying file 15: 1548556547879731673.png
+-----------------------------------------------
+Total resolution pixels: 307200
+True positives: 63706 at 20.737630208333332
+True negatives: 178272 at 58.03125
+False positives: 64638 at 21.041015625
+False negatives: 584 at 0.19010416666666666
+Rectangle pixels: 139776 which is 45.5% of the image.
+Rectangle true positives: 63706 at 45.57720924908425
+Rectangle true negatives: 10848 at 7.760989010989011
+Rectangle false positives: 64638 at 46.24399038461539
+Rectangle false negatives: 584 at 0.4178113553113553
+
+Trying file 16: 1548556568372283485.png
+-----------------------------------------------
+Total resolution pixels: 307200
+True positives: 24850 at 8.089192708333334
+True negatives: 261201 at 85.0263671875
+False positives: 20914 at 6.807942708333333
+False negatives: 235 at 0.07649739583333333
+Rectangle pixels: 61050 which is 19.873046875% of the image.
+Rectangle true positives: 24850 at 40.7043407043407
+Rectangle true negatives: 15051 at 24.653562653562652
+Rectangle false positives: 20914 at 34.257166257166254
+Rectangle false negatives: 235 at 0.38493038493038495
+
+Trying file 17: 1548556588201674016.png
+-----------------------------------------------
+Total resolution pixels: 307200
+True positives: 21908 at 7.131510416666667
+True negatives: 239455 at 77.94759114583333
+False positives: 45652 at 14.860677083333334
+False negatives: 185 at 0.060221354166666664
+Rectangle pixels: 70788 which is 23.04296875% of the image.
+Rectangle true positives: 21908 at 30.948748375430863
+Rectangle true negatives: 3043 at 4.298751200768492
+Rectangle false positives: 45652 at 64.49115669322484
+Rectangle false negatives: 185 at 0.2613437305758038
+
+Trying file 18: 1548556608028449048.png
+-----------------------------------------------
+Total resolution pixels: 307200
+True positives: 22386 at 7.287109375
+True negatives: 246124 at 80.11848958333333
+False positives: 38599 at 12.564778645833334
+False negatives: 91 at 0.029622395833333332
+Rectangle pixels: 63240 which is 20.5859375% of the image.
+Rectangle true positives: 22386 at 35.398481973434535
+Rectangle true negatives: 2164 at 3.4218848829854522
+Rectangle false positives: 38599 at 61.03573687539532
+Rectangle false negatives: 91 at 0.14389626818469323
+
+Trying file 19: 1548556628517146798.png
+-----------------------------------------------
+Total resolution pixels: 307200
+True positives: 14753 at 4.802408854166667
+True negatives: 268184 at 87.29947916666667
+False positives: 24103 at 7.846028645833333
+False negatives: 160 at 0.052083333333333336
+Rectangle pixels: 40145 which is 13.068033854166666% of the image.
+Rectangle true positives: 14753 at 36.74928384605804
+Rectangle true negatives: 1129 at 2.812305392950554
+Rectangle false positives: 24103 at 60.039855523726494
+Rectangle false negatives: 160 at 0.3985552372649147
+
+Trying file 20: 1548556646848134017.png
+-----------------------------------------------
+Total resolution pixels: 307200
+True positives: 44623 at 14.525716145833334
+True negatives: 240007 at 78.12727864583333
+False positives: 22307 at 7.261393229166667
+False negatives: 263 at 0.08561197916666667
+Rectangle pixels: 79315 which is 25.818684895833332% of the image.
+Rectangle true positives: 44623 at 56.260480363109124
+Rectangle true negatives: 12122 at 15.283363802559416
+Rectangle false positives: 22307 at 28.12456660152556
+Rectangle false negatives: 263 at 0.3315892328059005
+
+Trying file 21: 1548556664009561173.png
+-----------------------------------------------
+Total resolution pixels: 307200
+True positives: 14769 at 4.8076171875
+True negatives: 292213 at 95.12141927083333
+False positives: 183 at 0.0595703125
+False negatives: 35 at 0.011393229166666666
+Rectangle pixels: 22920 which is 7.4609375% of the image.
+Rectangle true positives: 14769 at 64.43717277486911
+Rectangle true negatives: 7933 at 34.61169284467714
+Rectangle false positives: 183 at 0.7984293193717278
+Rectangle false negatives: 35 at 0.15270506108202445
