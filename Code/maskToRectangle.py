@@ -5,7 +5,7 @@ import numpy as np                  # Mandatory array stuff
 
 truthPath = "Robot Arm Pictures\\Photoshop Masks"
 
-with open('rectangles.csv', 'w', newline='') as csvFile:
+with open('Data\\rectangles.csv', 'w', newline='') as csvFile:
     rectangleWriter = csv.writer(csvFile, delimiter= ',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
 
     for truthFile in os.listdir(truthPath):

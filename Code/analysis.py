@@ -1,72 +1,101 @@
-import os                           # Important for file matching
+import csv                          # CSV handling
 import matplotlib.image as mpimg    # Image reading
-import numpy as np                  # Mandatory array stuff
 
-# This script must be given two directories.
-# When given two directories it can compare all images of the same name.
-# Read image 1 from directory A, image 2 from directory B
-# Image 1 is "truth"
-# Image 2 is "kmeans"
-# Compare truth and kmeans pixel by pixel
-# True positive is when they agree on white.
-# True negative is when they agree on black.
-# False positive is when kmeans says white when truth says black.
-# False negative is when kmeans says black when truth says white.
-# Prints these four counters (and two error counters when necessary)
+def getPixelValue(pixel):
+    if(str(pixel).find("[") == -1):
+        return pixel
+    else:
+        if((pixel[0] == 0.) and (pixel[1] == 0.) and (pixel[2] == 0.)):
+            return 0.
+        elif((pixel[0] == 1.) and (pixel[1] == 1.) and (pixel[2] == 1.)):
+            return 1.
+        else:
+            return -1.
 
-# To do: Save the coordinates of truth errors so files can be cleaned manually.
-# To do: Ensure output is clean for multiple files. (Would it be worth saving to a .txt?)
+def getRectangles(rectangleCSVPath):
+    with open(rectangleCSVPath, newline='') as csvFile:
+        rectangleReader = list(csv.reader(
+            csvFile, delimiter=',', quotechar='|'))
 
+        return rectangleReader
+
+def performAnalysisOnImages(truthImage, predictionsImage, resolution=307200, x1=0, y1=0, x2=639, y2=479):
+    truePositive = 0
+    trueNegative = 0
+    falsePositive = 0
+    falseNegative = 0
+    truthErrors = 0
+    predictionErrors = 0
+    totalPixels = 0
+    x = 0
+    y = 0
+
+    for y in range(y1, (y2 + 1)):
+        for x in range(x1, (x2 + 1)):
+            totalPixels += 1
+            if(getPixelValue(truthImage[y][x]) == 1.):
+                if(getPixelValue(predictionsImage[y][x]) == 1.):
+                    truePositive += 1
+                elif(getPixelValue(predictionsImage[y][x]) == 0.):
+                    falseNegative += 1
+                else:
+                    predictionErrors += 1
+            elif(getPixelValue(truthImage[y][x]) == 0.):
+                if(getPixelValue(predictionsImage[y][x]) == 0.):
+                    trueNegative += 1
+                elif(getPixelValue(predictionsImage[y][x]) == 1.):
+                    falsePositive += 1
+                else:
+                    predictionErrors += 1
+            else:
+                truthErrors += 1
+                # print("Truth Error Coords | Row: " + str(x) + " | " + "Column: " + str(y))
+
+    printResults(totalPixels, resolution, truePositive, trueNegative, falsePositive, falseNegative, truthErrors, predictionErrors)
+
+def printResults(totalPixels, resolution, truePositive, trueNegative, falsePositive, falseNegative, truthErrors, predictionErrors):
+    noRectangleTrueNegative = trueNegative + (resolution - totalPixels)
+    print("Total resolution pixels: " + str(resolution))
+    print("True positives: " + str(truePositive) + " at " + str(truePositive * 100 / resolution))
+    print("True negatives: " + str(noRectangleTrueNegative) + " at " + str(noRectangleTrueNegative * 100 / resolution))
+    print("False positives: " + str(falsePositive) + " at " + str(falsePositive * 100 / resolution))
+    print("False negatives: " + str(falseNegative) + " at " + str(falseNegative * 100 / resolution))
+    if(totalPixels != resolution):
+        print("Rectangle pixels: " + str(totalPixels) + " which is " + str(totalPixels * 100 / resolution) + "% of the image.")
+        print("Rectangle true positives: " + str(truePositive) + " at " + str(truePositive * 100 / totalPixels))
+        print("Rectangle true negatives: " + str(trueNegative) + " at " + str(trueNegative * 100 / totalPixels))
+        print("Rectangle false positives: " + str(falsePositive) + " at " + str(falsePositive * 100 / totalPixels))
+        print("Rectangle false negatives: " + str(falseNegative) + " at " + str(falseNegative * 100 / totalPixels))
+    if(truthErrors > 0):
+        print("Truth errors: " + str(truthErrors))
+        # print("Truth errors occur when a pixel in the truth image is not black or white.")
+    if(predictionErrors > 0):
+        print("Prediction errors: " + str(predictionErrors))
+        # print("K-means errors occur when a pixel in the k-means image is not black or white.")
+    print("")
+
+### Main
 truthPath = "Robot Arm Pictures\\Photoshop Masks"
-kmeansPath = "Robot Arm Pictures\\K-means Strawman"
+implementationMaskPath = "Robot Arm Pictures\\K-means RGB Strawman"
+# implementationMaskPath = "Robot Arm Pictures\\K-means HSV Strawman"
+# implementationMaskPath = "Robot Arm Pictures\\SVM Test Images"
+rectangleCSVPath = "Data\\rectangles.csv"
 
-for truthFile in os.listdir(truthPath):
-    for kmeansFile in os.listdir(kmeansPath):
-        if(truthFile == kmeansFile):
-            print("Found a match with file: " + truthFile)
-            truthImage = mpimg.imread(truthPath + "\\" + truthFile)
-            kmeansImage = mpimg.imread(kmeansPath + "\\" + kmeansFile)
-            truePositive = 0
-            trueNegative = 0
-            falsePositive = 0
-            falseNegative = 0
-            truthErrors = 0
-            kmeansErrors = 0
-            totalPixels = 0
-            x = 0
-            y = 0
+rectangleList = getRectangles(rectangleCSVPath)
+fileIncrementor = 1
 
-            for row in truthImage:
-                for truthPixel in row:
-                    totalPixels += 1
-                    if(np.array_equal(truthPixel, [1.0, 1.0, 1.0, 1.0])):
-                        if(np.array_equal(truthPixel, kmeansImage[x][y])):
-                            truePositive += 1
-                        elif(np.array_equal(kmeansImage[x][y], [0.0, 0.0, 0.0, 1.0])):
-                            falseNegative +=1
-                        else:
-                            kmeansErrors += 1
-                    elif(np.array_equal(truthPixel, [0.0, 0.0, 0.0, 1.0])):
-                        if(np.array_equal(truthPixel, kmeansImage[x][y])):
-                            trueNegative += 1
-                        elif(np.array_equal(kmeansImage[x][y], [1.0, 1.0, 1.0, 1.0])):
-                            falsePositive +=1
-                        else:
-                            kmeansErrors += 1
-                    else:
-                        truthErrors += 1
-                    x += 1
-                x = 0
-                y += 1
+for rectangle in rectangleList:
+    truthFile = rectangle[0]
+    x1 = int(rectangle[1])
+    y1 = int(rectangle[2])
+    x2 = int(rectangle[3])
+    y2 = int(rectangle[4])
 
-            print("Total pixels: " + str(totalPixels))
-            print("True positives: " + str(truePositive) + " at " + str(truePositive * 100 / totalPixels))
-            print("True negatives: " + str(trueNegative) + " at " + str(trueNegative * 100 / totalPixels))
-            print("False positives: " + str(falsePositive) + " at " + str(falsePositive * 100 / totalPixels))
-            print("False negatives: " + str(falseNegative) + " at " + str(falseNegative * 100 / totalPixels))
-            if(truthErrors > 0):
-                print("Truth errors: " + str(truthErrors))
-                print("Truth errors occur when a pixel in the truth image is not black or white.")
-            if(kmeansErrors > 0):
-                print("K-means errors: " + str(kmeansErrors))
-                print("K-means errors occur when a pixel in the k-means image is not black or white.")
+    print("Trying file " + str(fileIncrementor) + ": " + truthFile)
+    print("-----------------------------------------------")
+    truthImage = mpimg.imread(truthPath + "\\" + truthFile)
+    implementationMask = mpimg.imread(implementationMaskPath + "\\" + truthFile)
+
+    performAnalysisOnImages(truthImage, implementationMask, x1=x1, y1=y1, x2=x2, y2=y2)
+
+    fileIncrementor += 1
