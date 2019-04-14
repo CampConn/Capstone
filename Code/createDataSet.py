@@ -74,7 +74,24 @@ def defineAllPixels(imagePath, maskPath, rectangle, group):
             
     return (trainingData, outsideRectangle)
 
-    return (trainingData, innerTestingData, outerTestingData)
+def writeToCSV(dataDictList, csvFilePath):
+    with open(csvFilePath, 'w', newline='') as csvfile:
+        fieldnames = ['red', 'green', 'blue', 'x', 'y', 'jpeg', 'group', 'inRectangle', 'class']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+        writer.writeheader()
+        for dataDict in dataDictList:
+            writer.writerow({
+                'red': dataDict['red'],
+                'green': dataDict['green'],
+                'blue': dataDict['blue'],
+                'x': dataDict['x'],
+                'y': dataDict['y'],
+                'jpeg': dataDict['jpeg'],
+                'group': dataDict['group'],
+                'inRectangle': dataDict['inRectangle'],
+                'class': dataDict['class']
+            })
 
 ### Main
 # rectangleCSVPath = "Data\\trainingPixels.csv"
