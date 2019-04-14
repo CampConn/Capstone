@@ -39,6 +39,38 @@ def defineAllPixels(imagePath, maskPath, rectangle, group):
             dataPoint = dict(jpeg=originalFile, group=group)
             if((y >= y1) and (y <= y2)):
                 if((x >= x1) and (x <= x2)):
+                    dataPoint.update({
+                        'red': original[y][x][0],
+                        'green': original[y][x][1],
+                        'blue': original[y][x][2],
+                        'x': x,
+                        'y': y,
+                        'inRectangle': 1,
+                        'class': getPixelValue(mask[y][x])
+                    })
+                    trainingData.append(dataPoint)
+                else:
+                    dataPoint.update({
+                        'red': original[y][x][0],
+                        'green': original[y][x][1],
+                        'blue': original[y][x][2],
+                        'x': x,
+                        'y': y,
+                        'inRectangle': 0,
+                        'class': 0
+                    })
+                    outsideRectangle.append(dataPoint)
+            else:
+                dataPoint.update({
+                    'red': original[y][x][0],
+                    'green': original[y][x][1],
+                    'blue': original[y][x][2],
+                    'x': x,
+                    'y': y,
+                    'inRectangle': 0,
+                    'class': 0
+                })
+                outsideRectangle.append(dataPoint)
             
     return (trainingData, outsideRectangle)
 
