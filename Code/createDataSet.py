@@ -10,11 +10,16 @@ def getRectangles(rectangleCSVPath):
 
         return rectangleReader
 
-def defineTrainingAndTestingPixels(truthPath, rectangle):
-    trainingData = np.array([], dtype=np.uint8).reshape(0, 3)
-    innerTestingData = np.array([], dtype=np.uint8).reshape(0, 3)
-    outsideTheRectangle = np.array([], dtype=np.uint8).reshape(0, 3)
-    outerTestingData = np.array([], dtype=np.uint8).reshape(0, 3)
+def getPixelValue(pixel):
+    if(str(pixel).find("[") == -1):
+        return pixel
+    else:
+        if((pixel[0] == 0.) and (pixel[1] == 0.) and (pixel[2] == 0.)):
+            return 0
+        elif((pixel[0] == 1.) and (pixel[1] == 1.) and (pixel[2] == 1.)):
+            return 1
+        else:
+            return -1
 
     pngFile = rectangle[0]
     jpegFile = pngFile.replace("png", "jpeg")
