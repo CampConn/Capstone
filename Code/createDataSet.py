@@ -34,6 +34,11 @@ def defineAllPixels(imagePath, maskPath, rectangle, group):
     trainingData = []
     outsideRectangle = []
 
+    for y in range(0, 480):
+        for x in range(0, 640):
+            dataPoint = dict(jpeg=originalFile, group=group)
+            if((y >= y1) and (y <= y2)):
+                if((x >= x1) and (x <= x2)):
             
     return (trainingData, outsideRectangle)
 
