@@ -1,6 +1,8 @@
-import csv      # 
-import sys      # To do: Use sys to implement argv.
-import matplotlib.image as mpimg
+import csv                          # Used to read and write CSVs.
+import sys                          # To do: Use sys to implement argv.
+import matplotlib.image as mpimg    # Used to open images
+import numpy as np                  # Special array functionality
+import random                       # Used to pick random pixels
 
 def getRectangles(rectangleCSVPath):
     with open(rectangleCSVPath, newline='') as csvFile:
