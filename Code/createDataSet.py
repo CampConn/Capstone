@@ -21,17 +21,21 @@ def getPixelValue(pixel):
         else:
             return -1
 
-    pngFile = rectangle[0]
-    jpegFile = pngFile.replace("png", "jpeg")
+def defineAllPixels(imagePath, maskPath, rectangle, group):
+    maskFile = rectangle[0]
+    originalFile = maskFile.replace("png", "jpeg")
     x1 = int(rectangle[1])
     y1 = int(rectangle[2])
     x2 = int(rectangle[3])
     y2 = int(rectangle[4])
-    inputImage = mpimg.imread(trainingImagePath + "\\" + jpegFile)
+    original = mpimg.imread(imagePath + "\\" + originalFile)
+    mask = mpimg.imread(maskPath + "\\" + maskFile)
 
-    for y in range(y1, (y2 + 1)):
-        for x in range(x1, (x2 + 1)):
+    trainingData = []
+    outsideRectangle = []
+
             
+    return (trainingData, outsideRectangle)
 
     return (trainingData, innerTestingData, outerTestingData)
 
