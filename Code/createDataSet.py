@@ -105,5 +105,19 @@ rectangleList = getRectangles(rectangleCSVPath)
 fileIncrementor = 0
 allTrainingData = []
 allTestingData = []
+for rectangle in rectangleList:
+    fileIncrementor += 1
+    group = int(fileIncrementor / 3) + 1
 
-# Everytime I process an image, I want to add it to the CSV.
+    print('Running defineAllPixels.')
+    (trainingData, outsideRectangle) = defineAllPixels(imagePath, maskPath, rectangle, group)
+    print('Running random shuffle twice.')
+    random.shuffle(trainingData)
+    random.shuffle(outsideRectangle)
+    print('Appending all data')
+    print('Length of training data is: ' + str(len(trainingData) / 10))
+    print('Length of outsideRectangle data is: ' + str(len(outsideRectangle) / 10))
+    allTestingData.extend(trainingData[0:int(len(trainingData) / 10)])
+    allTestingData.extend(outsideRectangle[0:int(len(outsideRectangle) / 10)])
+    allTrainingData.extend(trainingData)
+    print('--------------------------------------------')
