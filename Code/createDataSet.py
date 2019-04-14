@@ -108,7 +108,7 @@ allTrainingData = []
 allTestingData = []
 for rectangle in rectangleList:
     fileIncrementor += 1
-    group = math.floor(fileIncrementor / 3) + 1
+    group = math.floor((fileIncrementor - 1) / 3) + 1
 
     print('Running defineAllPixels.')
     (trainingData, outsideRectangle) = defineAllPixels(imagePath, maskPath, rectangle, group)
