@@ -106,10 +106,13 @@ rectangleList = getRectangles(rectangleCSVPath)
 fileIncrementor = 0
 allTrainingData = []
 allTestingData = []
+
+print('--------------------------------------------')
 for rectangle in rectangleList:
     fileIncrementor += 1
     group = math.floor((fileIncrementor - 1) / 3) + 1
 
+    print('File: ' + str(fileIncrementor) + ' | Group: '+ str(group))
     print('Running defineAllPixels.')
     (trainingData, outsideRectangle) = defineAllPixels(imagePath, maskPath, rectangle, group)
     print('Running random shuffle twice.')
