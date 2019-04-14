@@ -71,7 +71,7 @@ def defineAllPixels(imagePath, maskPath, rectangle, group):
                     'class': 0
                 })
                 outsideRectangle.append(dataPoint)
-            
+
     return (trainingData, outsideRectangle)
 
 def writeToCSV(dataDictList, csvFilePath):
@@ -121,3 +121,6 @@ for rectangle in rectangleList:
     allTestingData.extend(outsideRectangle[0:int(len(outsideRectangle) / 10)])
     allTrainingData.extend(trainingData)
     print('--------------------------------------------')
+print('Done looping, writing to files now.')
+writeToCSV(allTrainingData, trainingCSVPath)
+writeToCSV(allTestingData, testingCSVPath)
