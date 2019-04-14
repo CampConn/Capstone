@@ -54,16 +54,16 @@ def svmPredictionToMask(boolList, x1=0, y1=0, x2=639, y2=479):
 
 ### Main
 trainingImagePath = "Robot Arm Pictures\\Originals"
-svmMaskPath = "Robot Arm Pictures\\SVM Test Images"
+svmMaskPath = "Robot Arm Pictures\\SVM Test RBF Auto Images"
 rectangleCSVPath = "Data\\rectangles.csv"
-modelOutputPath = "Data\\svmTestModel.joblib"
+modelOutputPath = "Data\\svmTestRBFAutoModel.joblib"
 fileIterator = 1
 
 print("Grabbing all rectangles from CSV.")
 rectangleList = getRectangles(rectangleCSVPath)
 print("Loading up SVM.")
 clf = load(modelOutputPath)
-print()
+print("--------------------------------------------------------")
 
 for rectangle in rectangleList:
     print("Working on file " + str(fileIterator) + ".")
@@ -83,5 +83,5 @@ for rectangle in rectangleList:
     print("Image ready to be saved. Saving now.")
     mpimg.imsave((svmMaskPath + "\\" + pngFile), predictedMask)
     print("Image saved.")
-    print()
+    print("--------------------------------------------------------")
     fileIterator += 1
