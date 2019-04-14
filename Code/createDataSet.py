@@ -94,9 +94,16 @@ def writeToCSV(dataDictList, csvFilePath):
             })
 
 ### Main
-# rectangleCSVPath = "Data\\trainingPixels.csv"
-# rectangleCSVPath = "Data\\testingPixels.csv"
-# truthPath = "Robot Arm Pictures\\Photoshop Masks"
+imagePath = "Robot Arm Pictures\\Originals"
+maskPath = "Robot Arm Pictures\\Photoshop Masks"
+rectangleCSVPath = "Data\\rectangles.csv"
+trainingCSVPath = "Data\\trainingPixels.csv"
+testingCSVPath = "Data\\testingPixels.csv"
+random.seed(a='Lux Vision')
 
+rectangleList = getRectangles(rectangleCSVPath)
+fileIncrementor = 0
+allTrainingData = []
+allTestingData = []
 
 # Everytime I process an image, I want to add it to the CSV.
