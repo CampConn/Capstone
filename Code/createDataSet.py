@@ -3,6 +3,7 @@ import sys                          # To do: Use sys to implement argv.
 import matplotlib.image as mpimg    # Used to open images
 import numpy as np                  # Special array functionality
 import random                       # Used to pick random pixels
+import math                         # Needed for floor function
 
 def getRectangles(rectangleCSVPath):
     with open(rectangleCSVPath, newline='') as csvFile:
@@ -107,7 +108,7 @@ allTrainingData = []
 allTestingData = []
 for rectangle in rectangleList:
     fileIncrementor += 1
-    group = int(fileIncrementor / 3) + 1
+    group = math.floor(fileIncrementor / 3) + 1
 
     print('Running defineAllPixels.')
     (trainingData, outsideRectangle) = defineAllPixels(imagePath, maskPath, rectangle, group)
