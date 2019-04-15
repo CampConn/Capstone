@@ -26,17 +26,24 @@ def getPixelDataFromCSV(csvPath):
 
 ### Main
 trainingPixelsCSV = "Data\\Formatted Pixel Data\\trainingPixelsGroup1.csv"
-modelOutputPath = "Data\\svmLinearModelGroup1.joblib"
+modelOutputPath = "Data\\SVM Group Models\\svmLinearModelGroup1.joblib"
+previousGroup = 1
 
-print("Loading CSV into NumPy array.")
-(pixelFeatureSet, pixelClassSet) = getPixelDataFromCSV(trainingPixelsCSV)
-print("NumPy arrays loaded. Setting up SVM.")
-# Kernel's are rbf, linear, poly, sigmoid and "precomputed" (I don't think I should do precomputed)
-# Gamma's are auto, scale
-clf = svm.SVC(kernel='linear', gamma='scale', verbose=True, cache_size=500)
-print("SVM: Using SVC classifier, linear kernel, scale gamma, and 500MB cache.")
-print("Beginning to fit data... (This will take a while.)")
-clf.fit(pixelFeatureSet, pixelClassSet)
-print("SVM fitted. Saving SVM model for repeated use.")
-dump(clf, modelOutputPath)
-print("SVM Model saved.")
+for(i in range(2, 8)):
+    if(i != previousGroup):
+        testingPixelsCSV = testingPixelsCSV.replace(str(previousGroup), str(i))
+        modelOutputPath = modelOutputPath.replace(str(previousGroup), str(i))
+        previousGroup = i
+
+    print("Loading CSV into NumPy array.")
+    (pixelFeatureSet, pixelClassSet) = getPixelDataFromCSV(trainingPixelsCSV)
+    print("NumPy arrays loaded. Setting up SVM.")
+    # Kernel's are rbf, linear, poly, sigmoid and "precomputed" (I don't think I should do precomputed)
+    # Gamma's are auto, scale
+    clf = svm.SVC(kernel='linear', gamma='scale', verbose=True, cache_size=500)
+    print("SVM: Using SVC classifier, linear kernel, scale gamma, and 500MB cache.")
+    print("Beginning to fit data... (This will take a while.)")
+    clf.fit(pixelFeatureSet, pixelClassSet)
+    print("SVM fitted. Saving SVM model for repeated use.")
+    dump(clf, modelOutputPath)
+    print("SVM Model saved.")
