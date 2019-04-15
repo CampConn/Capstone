@@ -14,7 +14,7 @@ def getPixelDataFromCSV(csvPath):
             counter += 1
             if(counter % 5000 == 0):
                 print('Progress: ' + str(counter))
-
+            
             pixelFeatures = np.array([int(pixel['red']), int(pixel['green']), int(pixel['blue'])])
             pixelClass = np.array(int(pixel['class']))
             pixelFeatureSet = np.concatenate((pixelFeatureSet, pixelFeatures), axis=0)
@@ -34,9 +34,9 @@ print("NumPy arrays loaded. Setting up SVM.")
 # Kernel's are rbf, linear, poly, sigmoid and "precomputed" (I don't think I should do precomputed)
 # Gamma's are auto, scale
 clf = svm.SVC(kernel='linear', gamma='scale', verbose=True, cache_size=500)
-print("SVM gamma set to 'scale'.")
+print("SVM: Using SVC classifier, linear kernel, scale gamma, and 500MB cache.")
 print("Beginning to fit data... (This will take a while.)")
-clf.fit(x, y)
+clf.fit(pixelFeatureSet, pixelClassSet)
 print("SVM fitted. Saving SVM model for repeated use.")
 dump(clf, modelOutputPath)
 print("SVM Model saved.")
