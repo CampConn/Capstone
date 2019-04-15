@@ -66,6 +66,9 @@ clf = load(modelOutputPath)
 print("--------------------------------------------------------")
 
 for rectangle in rectangleList:
+    # if(fileIterator >= 4):
+    #     continue
+
     print("Working on file " + str(fileIterator) + ".")
     pngFile = rectangle[0]
     jpegFile = pngFile.replace("png", "jpeg")
