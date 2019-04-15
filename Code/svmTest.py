@@ -76,7 +76,7 @@ testingPixelsCSV = "Data\\Formatted Pixel Data\\testingPixelsGroup1.csv"
 modelOutputPath = "Data\\SVM Group Models\\svmLinearModelGroup1.joblib"
 previousGroup = 1
 
-for(i in range(1, 8)):
+for i in range(1, 8):
     if(i != previousGroup):
         testingPixelsCSV = testingPixelsCSV.replace(str(previousGroup), str(i))
         modelOutputPath = modelOutputPath.replace(str(previousGroup), str(i))
