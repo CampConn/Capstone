@@ -25,33 +25,12 @@ def getPixelDataFromCSV(csvPath):
     return (pixelFeatureSet, pixelClassSet)
 
 ### Main
-trainingImagePath = "Robot Arm Pictures\\Originals"
-trainingMaskPath = "Robot Arm Pictures\\Photoshop Masks"
-rectangleCSVPath = "Data\\rectangles.csv"
-modelOutputPath = "Data\\svmLinearModel.joblib"
+trainingPixelsCSV = "Data\\Formatted Pixel Data\\trainingPixelsGroup1.csv"
+modelOutputPath = "Data\\svmLinearModelGroup1.joblib"
 
-print("Using CSV to get best rectangle.")
-rectangle = smallestRectangle(rectangleCSVPath)
-pngFile = rectangle[0]
-jpegFile = pngFile.replace("png", "jpeg")
-x1 = int(rectangle[1])
-y1 = int(rectangle[2])
-x2 = int(rectangle[3])
-y2 = int(rectangle[4])
-print("Setting up images, x, and y with rectangle.")
-inputImage = mpimg.imread(trainingImagePath + "\\" + jpegFile)
-inputMask = mpimg.imread(trainingMaskPath + "\\" + pngFile)
-print("Images completed.")
-x = jpegToList(inputImage, x1, y1, x2, y2)
-print("X completed.")
-y = maskPngToBooleanList(inputMask, x1, y1, x2, y2)
-print("Y completed.")
-# Helpful data debug statements
-# print("X: " + str(x))
-# print("Y: " + str(y))
-# print("X len: " + str(len(x)))
-# print("Y len: " + str(len(y)))
-print("Setting up SVM.")
+print("Loading CSV into NumPy array.")
+(pixelFeatureSet, pixelClassSet) = getPixelDataFromCSV(trainingPixelsCSV)
+print("NumPy arrays loaded. Setting up SVM.")
 # Kernel's are rbf, linear, poly, sigmoid and "precomputed" (I don't think I should do precomputed)
 # Gamma's are auto, scale
 clf = svm.SVC(kernel='linear', gamma='scale', verbose=True, cache_size=500)
