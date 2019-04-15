@@ -16,3 +16,7 @@ you will see accuracy around 75%, because this method is not using rectangles.
 
 
 ***********you also need to install these packages for other kmeans test.
+
+kmeans-hsv.py method is dropped.
+
+kmeans.py will generate masks and those images will be analyzed by Chase's test script.
