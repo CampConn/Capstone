@@ -1,7 +1,9 @@
 ## Support Vector Machine Kernel Tests
 
 The purpose of this page is to define the practical differences between each kernel.
-
+Based on the all six attempts (tests), it appears that linear is the clear choice.
+Not only was one of the fastest (slower than RBF but much faster than poly), it had high performance.
+This performance was the case even with overfitted data (10,000 points).
 
 ### Attempt 1
 
@@ -47,13 +49,25 @@ However, we can see that it had a really difficult time with background elements
 ### Attempt 5
 
 Kernel = Poly
-Testing on training image:
-Best test result:
-Worst test result:
+Testing on training image: 95% accuracy
+Best test result: 95% accuracy
+Worst test result: 75% accuracy
+
+Wow, and I thought linear took a long time.
+1,167,284,911 iterations.
+I feel like that took roughly 2.5 to 3 hours.
+Let's see if it was worth it.
+Looking at the results, it appears it wasn't better than linear.
+Due to long run time and mediocre performance, linear looks like the winner.
 
 ### Attempt 6
 
 Kernel = Sigmoid
-Testing on training image:
-Best test result:
-Worst test result:
+Testing on training image: 54% accuracy
+Best test result: 49% accuracy
+Worst test result: 16% accuracy
+
+Wow, sigmoid was crazily fast.
+8,116 iterations.
+Oh, it drew the arm, just complete backwards.
+I have a feeling it'd improve with more data or more iterations.
