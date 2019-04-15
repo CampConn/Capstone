@@ -13,3 +13,6 @@ open the file and run the kmeans_final_version.py
 it will take a while even though the model's been loaded
 
 you will see accuracy around 75%, because this method is not using rectangles.
+
+
+***********you also need to install these packages for other kmeans test.
