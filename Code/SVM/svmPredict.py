@@ -2,6 +2,7 @@ import os                           # Lists files in a directory
 import csv                          # CSV handling
 import matplotlib.image as mpimg    # Image reading
 import numpy as np                  # Special array functionality
+import math                         # Needed to define group number
 from sklearn import svm             # Support Vector Machine
 from joblib import dump, load       # SVM Model Persistence
 
@@ -57,19 +58,24 @@ trainingImagePath = "Robot Arm Pictures\\Originals"
 svmMaskPath = "Robot Arm Pictures\\Support Vector Machine Images"
 rectangleCSVPath = "Data\\rectangles.csv"
 modelOutputPath = "Data\\SVM Group Models\\svmLinearModelGroup1.joblib"
-fileIterator = 1
+fileIterator = 0
+previousGroup = 0
 
 print("Grabbing all rectangles from CSV.")
 rectangleList = getRectangles(rectangleCSVPath)
-print("Loading up SVM.")
-clf = load(modelOutputPath)
 print("--------------------------------------------------------")
 
 for rectangle in rectangleList:
-    # if(fileIterator >= 4):
-    #     continue
+    fileIterator += 1
+    group = math.floor((fileIterator - 1) / 3) + 1
 
-    print("Working on file " + str(fileIterator) + ".")
+    if(group != previousGroup):
+        modelOutputPath = modelOutputPath.replace(str(previousGroup), str(group))
+        print("Loading up SVM model " + str(group) + ".")
+        clf = load(modelOutputPath)
+        previousGroup = group
+
+    print("Working on file: " + str(fileIterator) + " | Group: " + str(group))
     pngFile = rectangle[0]
     jpegFile = pngFile.replace("png", "jpeg")
     x1 = int(rectangle[1])
@@ -87,4 +93,3 @@ for rectangle in rectangleList:
     mpimg.imsave((svmMaskPath + "\\" + pngFile), predictedMask)
     print("Image saved.")
     print("--------------------------------------------------------")
-    fileIterator += 1
