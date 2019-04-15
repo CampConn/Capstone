@@ -28,13 +28,15 @@ def getPixelDataFromCSV(csvPath):
 trainingPixelsCSV = "Data\\Formatted Pixel Data\\trainingPixelsGroup1.csv"
 modelOutputPath = "Data\\SVM Group Models\\svmLinearModelGroup1.joblib"
 previousGroup = 1
-
+# This is only 2, 8 temporarily... Should be 1, 8
 for i in range(2, 8):
     if(i != previousGroup):
-        testingPixelsCSV = testingPixelsCSV.replace(str(previousGroup), str(i))
+        trainingPixelsCSV = trainingPixelsCSV.replace(str(previousGroup), str(i))
         modelOutputPath = modelOutputPath.replace(str(previousGroup), str(i))
         previousGroup = i
 
+    print("Current CSV Path: " + trainingPixelsCSV)
+    print("Current Model Path: " + modelOutputPath)
     print("Loading CSV into NumPy array.")
     (pixelFeatureSet, pixelClassSet) = getPixelDataFromCSV(trainingPixelsCSV)
     print("NumPy arrays loaded. Setting up SVM.")
