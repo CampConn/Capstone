@@ -28,8 +28,8 @@ def getPixelDataFromCSV(csvPath):
 trainingPixelsCSV = "Data\\Formatted Pixel Data\\trainingPixelsGroup1.csv"
 modelOutputPath = "Data\\SVM Group Models\\svmLinearModelGroup1.joblib"
 previousGroup = 1
-# This is only 2, 8 temporarily... Should be 1, 8
-for i in range(2, 8):
+
+for i in range(1, 8):
     if(i != previousGroup):
         trainingPixelsCSV = trainingPixelsCSV.replace(str(previousGroup), str(i))
         modelOutputPath = modelOutputPath.replace(str(previousGroup), str(i))
