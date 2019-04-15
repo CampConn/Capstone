@@ -72,17 +72,25 @@ def printResults(totalPixels, resolution, truePositive, trueNegative, falsePosit
     if(predictionErrors > 0):
         print("Prediction errors: " + str(predictionErrors))
         # print("K-means errors occur when a pixel in the k-means image is not black or white.")
-    print("")
+    print("====><====")
+    print("In rectangle accuracy: " + str(
+        (truePositive * 100 / totalPixels) + (trueNegative * 100 / totalPixels)
+    ))
+    print("Total accuracy: " + str(
+        (truePositive * 100 / resolution) + (noRectangleTrueNegative * 100 / resolution)
+    ))
+    print("-----------------------------------------------")
+    print()
 
 ### Main
 truthPath = "Robot Arm Pictures\\Photoshop Masks"
 # implementationMaskPath = "Robot Arm Pictures\\K-means RGB Strawman"
 # implementationMaskPath = "Robot Arm Pictures\\K-means HSV Strawman"
 # implementationMaskPath = "Robot Arm Pictures\\SVM Test RBF Auto Images"
-implementationMaskPath = "Robot Arm Pictures\\SVM Test RBF Scale Images"
+# implementationMaskPath = "Robot Arm Pictures\\SVM Test RBF Scale Images"
 # implementationMaskPath = "Robot Arm Pictures\\SVM Test Linear Images"
 # implementationMaskPath = "Robot Arm Pictures\\SVM Test Poly Images"
-# implementationMaskPath = "Robot Arm Pictures\\SVM Test Sigmoid Images"
+implementationMaskPath = "Robot Arm Pictures\\SVM Test Sigmoid Images"
 rectangleCSVPath = "Data\\rectangles.csv"
 
 rectangleList = getRectangles(rectangleCSVPath)
