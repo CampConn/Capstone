@@ -1,52 +1,28 @@
-import os                           # Lists files in a directory
 import csv                          # CSV handling
-import matplotlib.image as mpimg    # Image reading
 import numpy as np                  # Special array functionality
 from sklearn import svm             # Support Vector Machine
 from joblib import dump, load       # SVM Model Persistence
 
-def smallestRectangle(rectangleCSVPath):
-    with open(rectangleCSVPath, newline='') as csvFile:
-        rectangleReader = list(csv.reader(
-            csvFile, delimiter=',', quotechar='|'))
+def getPixelDataFromCSV(csvPath):
+    pixelFeatureSet = np.array([], dtype=np.uint8)
+    pixelClassSet = np.array([], dtype=np.uint8)
+    counter = 0
 
-        # Possible To Do: Parse through CSV to find best rectangle
-        # Only necessary if the csv changes a lot or is given a large amount of data.
-        # for rectangleRow in rectangleReader:
-        #   parse for smallest x2 - x1 and y2 - y1
-        #   result can't be 0, must actually find a rectangle
+    with open(csvPath, newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for pixel in reader:
+            counter += 1
+            if(counter % 5000 == 0):
+                print('Progress: ' + str(counter))
 
-        return rectangleReader[20]
+            pixelFeatures = np.array([int(pixel['red']), int(pixel['green']), int(pixel['blue'])])
+            pixelClass = np.array(int(pixel['class']))
+            pixelFeatureSet = np.concatenate((pixelFeatureSet, pixelFeatures), axis=0)
+            pixelClassSet = np.concatenate((pixelClassSet, pixelClass), axis=None)
 
-# Note, this function can be optimized for nearest neighbor groupings.
-def jpegToList(mask, x1=0, y1=0, x2=639, y2=479):
-    pixelList = np.array([], dtype=np.uint8).reshape(0, 3)
+    pixelFeatureSet = pixelFeatureSet.reshape(int(len(pixelFeatureSet) / 3), 3)
 
-    for y in range(y1, (y2 + 1)):
-        for x in range(x1, (x2 + 1)):
-            # Helpful data debug statement
-            # print("Mask: " + str(mask[y][x]) + " at x[" + str(x) + "] y[" + str(y) + "].")
-            pixelList = np.concatenate((pixelList, np.array([mask[y][x]])), axis=0)
-
-    return pixelList
-
-def maskPngToBooleanList(mask, x1=0, y1=0, x2=639, y2=479):
-    boolList = np.array([], dtype=np.uint8)
-    truthErrors = 0
-
-    for y in range(y1, (y2 + 1)):
-        for x in range(x1, (x2 + 1)):
-            # Helpful data debug statement
-            # print("Mask: " + str(mask[y][x]) + " at x[" + str(x) + "] y[" + str(y) + "].")
-            if(np.array_equal(mask[y][x], [1.0, 1.0, 1.0, 1.0])):
-                boolList = np.append(boolList, 1)
-            elif(np.array_equal(mask[y][x], [0.0, 0.0, 0.0, 1.0])):
-                boolList = np.append(boolList, 0)
-            else:
-                truthErrors += 1
-                boolList = np.append(boolList, 0)
-
-    return boolList
+    return (pixelFeatureSet, pixelClassSet)
 
 ### Main
 trainingImagePath = "Robot Arm Pictures\\Originals"
