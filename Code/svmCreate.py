@@ -52,7 +52,7 @@ def maskPngToBooleanList(mask, x1=0, y1=0, x2=639, y2=479):
 trainingImagePath = "Robot Arm Pictures\\Originals"
 trainingMaskPath = "Robot Arm Pictures\\Photoshop Masks"
 rectangleCSVPath = "Data\\rectangles.csv"
-modelOutputPath = "Data\\svmTestRBFAutoModel.joblib"
+modelOutputPath = "Data\\svmLinearModel.joblib"
 
 print("Using CSV to get best rectangle.")
 rectangle = smallestRectangle(rectangleCSVPath)
@@ -78,8 +78,8 @@ print("Y completed.")
 print("Setting up SVM.")
 # Kernel's are rbf, linear, poly, sigmoid and "precomputed" (I don't think I should do precomputed)
 # Gamma's are auto, scale
-clf = svm.SVC(kernel='rbf', gamma='auto', verbose=True, cache_size=500)
-print("SVM gamma set to 'auto'.")
+clf = svm.SVC(kernel='linear', gamma='scale', verbose=True, cache_size=500)
+print("SVM gamma set to 'scale'.")
 print("Beginning to fit data... (This will take a while.)")
 clf.fit(x, y)
 print("SVM fitted. Saving SVM model for repeated use.")

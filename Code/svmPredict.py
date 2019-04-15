@@ -54,9 +54,9 @@ def svmPredictionToMask(boolList, x1=0, y1=0, x2=639, y2=479):
 
 ### Main
 trainingImagePath = "Robot Arm Pictures\\Originals"
-svmMaskPath = "Robot Arm Pictures\\SVM Test RBF Auto Images"
+svmMaskPath = "Robot Arm Pictures\\Support Vector Machine Images"
 rectangleCSVPath = "Data\\rectangles.csv"
-modelOutputPath = "Data\\svmTestRBFAutoModel.joblib"
+modelOutputPath = "Data\\svmLinearModel.joblib"
 fileIterator = 1
 
 print("Grabbing all rectangles from CSV.")
