@@ -34,9 +34,9 @@ Also, it took 29,028 iterations to learn.
 ### Attempt 4
 
 Kernel = Linear
-Testing on training image:
-Best test result:
-Worst test result:
+Testing on training image: 96% accuracy
+Best test result: 95% accuracy
+Worst test result: 76% accuracy
 
 Holy crap, it ran for 64,906,910 iterations.
 Each iteration was fairly fast but dang.
