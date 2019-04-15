@@ -98,19 +98,34 @@ def writeToCSV(dataDictList, csvFilePath):
 imagePath = "Robot Arm Pictures\\Originals"
 maskPath = "Robot Arm Pictures\\Photoshop Masks"
 rectangleCSVPath = "Data\\rectangles.csv"
-trainingCSVPath = "Data\\trainingPixels.csv"
-testingCSVPath = "Data\\testingPixels.csv"
+trainingCSVPath = "Data\\Formatted Pixel Data\\trainingPixels.csv"
+testingCSVPath = "Data\\Formatted Pixel Data\\testingPixels.csv"
 random.seed(a='Lux Vision')
 
 rectangleList = getRectangles(rectangleCSVPath)
 fileIncrementor = 0
 allTrainingData = []
 allTestingData = []
+previousGroup = 1
 
 print('--------------------------------------------')
 for rectangle in rectangleList:
     fileIncrementor += 1
     group = math.floor((fileIncrementor - 1) / 3) + 1
+
+    if(previousGroup != group):
+        print('Writing to group ' + str(previousGroup) + '\'s files.')
+        groupTrainingCSVPath = trainingCSVPath.replace(
+            '.csv', ('Group' + str(previousGroup) + '.csv'))
+        groupTestingCSVPath = testingCSVPath.replace(
+            '.csv', ('Group' + str(previousGroup) + '.csv'))
+        writeToCSV(allTrainingData, groupTrainingCSVPath)
+        writeToCSV(allTestingData, groupTestingCSVPath)
+        allTrainingData = []
+        allTestingData = []
+        previousGroup = group
+        print('Done writing!')
+        print('--------------------------------------------')
 
     print('File: ' + str(fileIncrementor) + ' | Group: '+ str(group))
     print('Running defineAllPixels.')
@@ -119,13 +134,19 @@ for rectangle in rectangleList:
     random.shuffle(trainingData)
     random.shuffle(outsideRectangle)
     print('Appending all data')
-    print('Length of training data is: ' + str(len(trainingData) / 10))
-    print('Length of outsideRectangle data is: ' + str(len(outsideRectangle) / 10))
+    print('Length of training data is: ' + str(int(len(trainingData) / 10)))
+    print('Length of outsideRectangle data is: ' + str(int(len(outsideRectangle) / 10)))
     allTestingData.extend(trainingData[0:int(len(trainingData) / 10)])
     allTestingData.extend(outsideRectangle[0:int(len(outsideRectangle) / 10)])
     allTrainingData.extend(trainingData[(int(len(trainingData) / 10) + 1):int(len(trainingData))])
     print('--------------------------------------------')
-    print('--------------------------------------------')
-print('Done looping, writing to files now.')
-writeToCSV(allTrainingData, trainingCSVPath)
-writeToCSV(allTestingData, testingCSVPath)
+print('Done looping.')
+print('Writing to group ' + str(previousGroup) + '\'s files.')
+groupTrainingCSVPath = trainingCSVPath.replace(
+    '.csv', ('Group' + str(previousGroup) + '.csv'))
+groupTestingCSVPath = testingCSVPath.replace(
+    '.csv', ('Group' + str(previousGroup) + '.csv'))
+writeToCSV(allTrainingData, groupTrainingCSVPath)
+writeToCSV(allTestingData, groupTestingCSVPath)
+print('Done writing!')
+print('--------------------------------------------')
