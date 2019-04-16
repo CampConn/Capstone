@@ -3,7 +3,8 @@
 There's a few SVM and other scripts which require Python to run.
 My build version was 3.5.0 but you should be able to use newer Python 3 versions.
 Here's a [link](https://www.python.org/downloads/release/python-350/) to my build version.
-You should also ensure
+You should also ensure that your Python path variable is set.
+You should be able to run "python --version" from anywhere.
 
 ## My Scripts
 
