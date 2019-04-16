@@ -15,7 +15,7 @@ You will see avg accuracy around 75% without rectangles. And for each images wit
 
 ***********you can also look at these .py files.
 
-kmeans-hsv.py method is ok but has ambiguous boundary detection.
+kmeans-hsv.py method is ok but has ambiguous boundary detection, so this method is dropped.
 
 kmeans.py generated masks and those images were analyzed by Chase's test script.
 
