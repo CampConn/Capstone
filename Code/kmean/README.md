@@ -4,7 +4,7 @@ How to run:
 
 1. install python35 if you have no python on your device.
 
-2. then install whl for packages that are going to use.
+2. then install whl for packages that are going to use. tensorflow is not used in this project, I just uploaded all of my packages folder.
 
 3. open the file and run the kmeans_10_test.py
 
