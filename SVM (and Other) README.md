@@ -47,25 +47,25 @@ All run commands are expected to be run from the top level directory (Capstone).
 ### svmCreate
 
 ``` bash
-python Code\\SVM\\svmCreate.py
+python Code\SVM\svmCreate.py
 ```
 
-This creates 7 models from the 7 trainingCSVs located in 'Data\\Formatted Pixel Data'.
+This creates 7 models from the 7 trainingCSVs located in 'Data\Formatted Pixel Data'.
 
 ### svmTest
 
 ``` bash
-python Code\\SVM\\svmTest.py
+python Code\SVM\svmTest.py
 ```
 
-Tests 7 models on the the 7 testingCSVs located in 'Data\\Formmatted Pixel Data'.
+Tests 7 models on the the 7 testingCSVs located in 'Data\Formmatted Pixel Data'.
 All output is printed to the commandline.
 You can specify an output file (to bash) by adding '> fileName.txt' at the end of the call.
 
 ### svmPredict
 
 ``` bash
-python Code\\SVM\\svmPredict.py
+python Code\SVM\svmPredict.py
 ```
 
 Will use the 7 models to create 21 predicted masks.
@@ -90,7 +90,7 @@ Set 'implementationMaskPath' to your folder (containing your 21 predicted masks)
 (Note, if you're implementationMaskPath is already available, uncomment it and comment out the active one.)
 
 ``` bash
-python Code\\Misc\\analysis.py
+python Code\Misc\analysis.py
 ```
 
 Output will be 21 different picture (in the rectangle).
@@ -99,7 +99,7 @@ You can dump this into a txt (using Bash) by adding '> fileName.txt' to the bash
 ### maskToRectangle
 
 ``` bash
-python Code\\Misc\\maskToRectangle.py
+python Code\Misc\maskToRectangle.py
 ```
 
 Will analyze the photoshop masks and create a csv containing two (x,y) coordinates and associated file.
@@ -109,7 +109,7 @@ This script creates a simulation of the rough masks that we're expecting as inpu
 ### createDataSet
 
 ``` bash
-python Code\\Misc\\createDataSet.py
+python Code\Misc\createDataSet.py
 ```
 
 Will create 7 CSVs for training and testing (each).
