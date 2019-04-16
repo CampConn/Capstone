@@ -35,11 +35,9 @@ You should be able to run "python --version" from anywhere.
 
 ### Installing Third Party Libraries with Pip
 
-1. python -m pip install -U pip
-2. python -m pip install -U matplotlib
-3. python -m pip install -U numpy
-4. python -m pip install -U scikit-learn
-5. python -m pip install -U joblib
+``` bash
+python -m pip install -U pip matplotlib numpy scikit-learn joblib
+```
 
 ## SVM Script Explanation (How to run)
 
