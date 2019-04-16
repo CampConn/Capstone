@@ -86,11 +86,7 @@ def printResults(totalPixels, resolution, truePositive, trueNegative, falsePosit
 truthPath = "Robot Arm Pictures\\Photoshop Masks"
 # implementationMaskPath = "Robot Arm Pictures\\K-means RGB Strawman"
 # implementationMaskPath = "Robot Arm Pictures\\K-means HSV Strawman"
-# implementationMaskPath = "Robot Arm Pictures\\SVM Test RBF Auto Images"
-# implementationMaskPath = "Robot Arm Pictures\\SVM Test RBF Scale Images"
-# implementationMaskPath = "Robot Arm Pictures\\SVM Test Linear Images"
-# implementationMaskPath = "Robot Arm Pictures\\SVM Test Poly Images"
-implementationMaskPath = "Robot Arm Pictures\\SVM Test Sigmoid Images"
+implementationMaskPath = "Robot Arm Pictures\\Support Vector Machine Images"
 rectangleCSVPath = "Data\\rectangles.csv"
 
 rectangleList = getRectangles(rectangleCSVPath)
