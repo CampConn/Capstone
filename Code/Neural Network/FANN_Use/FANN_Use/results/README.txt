@@ -1,0 +1,1 @@
+Output.txt contains the ouput from running "Python analysis" to compare the handmade masks in "Photoshop Masks" with the neural network generated masks in "maskcompare." The folders organize the images into their groups and the networks used to generate them.
