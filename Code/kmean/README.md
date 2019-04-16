@@ -8,7 +8,7 @@ then install whl for packages that are going to use.
 
 
 
-open the file and run the kmeans_final_version.py
+open the file and run the kmeans_10_test.py
 
 it will take a while even though the model's been loaded
 
