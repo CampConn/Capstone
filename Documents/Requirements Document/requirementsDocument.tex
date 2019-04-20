@@ -1,28 +1,6 @@
 \documentclass[10pt,journal,compsoc, draftclsnofoot,onecolumn]{IEEEtran}
 
 \usepackage{graphicx}
-\usepackage{subcaption}
-\usepackage{epstopdf}
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage{amsthm}
-\usepackage{alltt}                                           
-\usepackage{float}
-\usepackage{color}
-\usepackage{url}
-\usepackage{balance}
-\usepackage{enumitem}
-\usepackage{parskip}
-\usepackage{pstricks, pst-node}
-\usepackage[margin=0.75in]{geometry}
-\geometry{textheight=8.5in, textwidth=6in}
-
-\newcommand{\cred}[1]{{\color{red}#1}}
-\newcommand{\cblue}[1]{{\color{blue}#1}}
-\usepackage{geometry}
-
-\usepackage{hyperref}
-\input{pygments.tex}
 
 \title{
     Requirements
@@ -48,54 +26,6 @@ Specifically, this Capstone project will be the culmination of implementing vari
 \tableofcontents
 \pagebreak
 
-\section{Table of Changes}
-\begin{center}
- \begin{tabular}{|p{0.3\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|p{0.2\linewidth}|}
-  \hline
-Section & Original & New \\ [0.5ex]
- \hline\hline
-
-
-Functional Requirements
-&
-Images grouped based on data for arm's specific pose.
-Images will come in stereoscopic pairs.
-&
-Images roughly based on pose, based on time stamp from video the images came from.
-Images are individual, monoscopic frames.
-\\ \hline
-
-
-Performance Requirements
-&
-Preferred 80\% accuracy on best method.
-&
-Best method should have an average of 90\% accuracy in the area with the arm within prediction masks.
-\\ \hline
-
-
-Verification
-&
-Preferred 80\% accuracy on best method.
-False negatives are worse than false positives.
-&
-Best method should have an average of 90\% accuracy in the area with the arm within prediction masks.
-False negative and false positives are counted the same.
-\\ \hline
-
-
-Definitions
-&
-N/A
-&
-Added definition for Support Vector Machine.
-\\ \hline
-
- 
- 
- \end{tabular}
-\end{center}
-\pagebreak
 
 \section{Purpose}
 This document will define the goals given by the client.
@@ -174,10 +104,10 @@ Since this program is meant to replace an older identification system, it will b
 %About one hundred and fifty key frames will be taken from the video for training and testing data.
 %The specular and diffuse will be measured by hand, as well as an accurate mask for the robotic arm using a image editing software, such as Photoshop.
 %The functions will be fed this data for it to train itself, and when it's done, it will be tested for accuracy.
-To begin, this project will be based on monoscopic images and time stamps that our client has gathered.
+To begin, this project will be based on images and pose transforms that our client has gathered.
 These images will be of the robotic arm in various poses, and will be used both for training and testing the algorithms.
 The initial straw man will be determined by simply running a k-means clustering over all of the data to determine a color range to look for.
-Next, the images will be roughly grouped based on the arm's pose.
+Next, the images will be roughly grouped based on the arm’s pose.
 Specifically, the images will be still frames from a video of the arm moving, and the groups will be based on the time stamps for the images.
 Each group will have its own version of each of the three methods.
 The three methods include another k-means clustering (though over a single group as opposed to all of the data), neural networks, and support vector machines.
@@ -191,7 +121,7 @@ The three methods include another k-means clustering (though over a single group
 %The second requirement is to reduce the size of the color range the computer is looking for.
 %The current method attempts to make up for variations in lighting and shade by using a large range of acceptable colors to be identified as the object.
 %Since the new method can account for the lighting on its own and adjust the expected average accordingly, we hope to reduce the range by a factor of ten, reducing the number of false positives, without losing a significant amount of true positives.
-The goal is for the best of the three methods to replace part of the larger project's current system.
+The goal is for the best of the three methods to replace part of the larger project’s current system.
 As such, it should label around 90\% of the pixels in a region around the arm correctly as either part of the arm or not. This region will be defined as the smallest rectangle containing the entirety of the arm for the given image
 %Ideally, it should have at least 90\% accuracy, but 80\% will at least be an improvement.
 
@@ -249,6 +179,28 @@ Thus, a linear regression analysis was chosen.
 % \includegraphics[width=\textwidth]{gantt_chart.JPG}
 
 
+\section{Table of Changes}
+\begin{center}
+ \begin{tabular}{|p{0.2\linewidth}|p{0.2\linewidth}|p{0.2\linewidth}|p{0.2\linewidth}|}
+  \hline
+ - & section & original & new \\ [0.5ex]
+ \hline\hline
 
+6
+&
+Group decided the Team Standards that depicts common regulations of the team.
+Also, group kept working on Requirements Document.
+Further, Tech Review started. 
+&
+The problem is that none of us in the group have machine learning experiences or taking the courses opened in spring term.
+The Requirements Document's machine learning part showed a weak and invalid implementation to TA.
+&
+Group attempted to revise Requirements Document later after next meeting with the client.
+\\ \hline
+
+ 
+ 
+ \end{tabular}
+\end{center}
 
 \end{document}

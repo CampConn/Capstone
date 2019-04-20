@@ -44,120 +44,26 @@ Robotic vision is an advanced topic that requires proper planning and considerat
 
 \pagebreak
 \tableofcontents
-\pagebreak
 \section{Table of Changes}
 \begin{center}
- \begin{tabular}{|p{0.3\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
+ \begin{tabular}{|p{0.2\linewidth}|p{0.2\linewidth}|p{0.2\linewidth}|p{0.2\linewidth}|}
   \hline
- Section & Original & New \\ [0.5ex]
+ - & section & original & new \\ [0.5ex]
  \hline\hline
 
-Summary
+6
 &
-Groups based on data for arm pose.
-Strict description of neural network structure.
+Group decided the Team Standards that depicts common regulations of the team.
+Also, group kept working on Requirements Document.
+Further, Tech Review started. 
 &
-Groups roughly based on pose base on time stamps for images.
-Neural network structure can be experimented with.
+The problem is that none of us in the group have machine learning experiences or taking the courses opened in spring term.
+The Requirements Document's machine learning part showed a weak and invalid implementation to TA.
+&
+Group attempted to revise Requirements Document later after next meeting with the client.
 \\ \hline
 
-Glossary
-&
-Mentions of Gimp and Caffe
-&
-Gimp and Caffe were removed, as we used Photoshop and FANN instead.
-Definition for Support Vector Machine provided
-\\ \hline
-
-Glossary
-&
-Added support vector machines and matplotlib.
-&
-Added a barebones definition of support vector machines.
-Also described matplotlib, the Python alternative to OpenCV.
-\\ \hline
-
-Stakeholders
-&
-Our teacher's assistant was Wesley Alexis
-&
-Our teacher's assistant is now Omeed Habibelahian
-\\ \hline
-
-Design Concerns
-&
-No mention of desired platform.
-&
-The platform the project is done on does not matter to the client.
-\\ \hline
-
-Design Aspects - Support Vector Machine
-&
-(Nothing about support vector machines.)
-&
-A new section containing information about support vector machines, the library used, and notes about turning an image into a prediction mask.
-\\ \hline
-
-Design Aspects - Neural Network API
-&
-We planned to use the Caffe framework
-&
-Used FANN Library instead
-\\ \hline
-
-Design Aspects - Qualifying Data
-&
-We planned to use Gimp.
-&
-We used Photoshop.
-Data only collected from the areas of images immediately surrounding the arm.
-\\ \hline
-
-Design Aspects - Input Images
-&
-Running on Python with package called OpenCV.
-&
-OpenCV is used in Neural Network solution by coding with C++. Right now, Kmeans use numpy package to read images as matrices to process.
-\\ \hline
-
-\end{tabular}
-\end{center}
-
-\begin{center}
- \begin{tabular}{|p{0.3\linewidth}|p{0.3\linewidth}|p{0.3\linewidth}|}
-  \hline
- Section & Original & New \\ [0.5ex]
- \hline\hline
-
-Design Aspects - Kmeans Learning
-&
-N/A
-&
-Using sklearn package to build up learning model and prediction function. The packge is available on Python official website.
-\\ \hline
-
-Show Masks During Running - Kmeans
-&
-N/A
-&
-Using matplotlib packges to pop the generated masks to a window for testing. It is available from Python official site.
-\\ \hline
-
-Saving Generated Masks - Kmeans
-&
-N/A
-&
-Using misc from scipy package to save generated masks in .png format. It is available from Python official site.
-\\ \hline
-
-
-
-Conclusion
-&
-Ideal accuracy 80-90\%
-&
-Accuracy should be 90\% between the predictions masks only within the arm's bounds.
-\\ \hline
+ 
  
  \end{tabular}
 \end{center}
@@ -210,9 +116,6 @@ Thus, a linear regression analysis was chosen.
 It was initially released in 2000 and written in C/C++.
 It supports various operating system and has interfaces for different programming languages, including Python, C and C++. The latest version is 4.0.0.
 
-\textbf{matplotlib.image}: A Python alternative to OpenCV.
-Used purely to open images as a list of RGB values and save lists of RGB values as images (at least by the SVM implementation).
-
 \textbf{RBG}: Stands for Red, Blue and Green. A different color model.
 
 \section{Stakeholders and Design Concerns}
@@ -221,22 +124,11 @@ The first is the client and sponsor, Cindy Grimm, whose primary concerns are com
 There are also the instructors, Kevin McGrath and Kirsten Winters, and the teaching assistant assigned to this project Omeed Habibelahian.
 Their primary concerns are upholding mandatory standards of practice and quality assurance.
 While in the context of the class, we should consider all stakeholders and concerns, this document will focus on the client's concerns.
-The platform in which this project is done doesn't matter to the client.
 
 \section{Design Aspects}
-\subsection{Support Vector Machine}
-The scikit-learn API contains a Support Vector Machine library.
-The API provides different kernels that create different shaped class groupings.
-A test will be done to find the best kernel for the problem (it is the linear kernel).
-Each kernel performs a different version of a regression analysis in order to make predictions on new data.
-Once the model is built (using supervised training), it can be fed RGB values to make a prediction.
-Thus an image can be turned into a list using matplotlib.image and fed directly to the prediction function.
-This will return a list of 0s and 1s (not part of the arm, part of the arm).
-This list can be turned back into an image to create a ``prediction mask''.
-
 \subsection{Neural Network API}
 Our completed project will be using neural networks. Overall, we'll be using a supervised learning approach.
-The Fast Artificial Neural Network (FANN) library will be used for developing this implementation \cite{3:online}.
+The Fast Artificial Neural Network (FANN) library will be used for developing this implementation.
 It's free, open source, and relatively easy to use, with plenty of documentation.
 The programs for generating and testing the neural networks will be kept flexible and easy to use, so that the client may make adjustments in the future if needed.
 
@@ -246,7 +138,6 @@ As such, not only will we need a large data set of images (which our client will
 Specifically, each pixel in the image will need to be labeled as either part of the arm or not part of the arm.
 This will require the use of image editing software that can trace objects.
 Our goal is to turn raw data into qualified, supervised data.
-Specifically, the data will only come from the area around the arm. Our client already has a means of estimating the arm's location, so it is not necessary to draw data from an entire image for any particular image group.
 
 Photoshop will be used to fulfill this need.
 Photoshop is available through the Citrix receiver provided through the university.
@@ -256,7 +147,6 @@ This will increase accessibility to the software. In turn, we'll be able to quic
 Once the sets of images of the arm are prepared, the next step is to read images into the software for training.
 This will require storing images and information about them in a way that the software can understand, as well as the ability to manipulate that information.
 
-
 In order to store and manipulate images, OpenCV will be used for the neural network implementation.
 OpenCV is an open source C/C++ library aimed at solving computer vision problems \cite{1:online}.
 OpenCV stores the pixels of an image in a matrix.
@@ -265,9 +155,6 @@ Each value in the matrix can represent a variable of RGB (BGR instead of RGB in 
 A pixel's color is described and manipulated through the use of a channel, which stores many values related to the pixel and automatically adjusts related values when one is changed.
 For instance, it can convert from BGR to HSV and vice versa, which allows for HSV to be used even if the image is based on the RGB color system.
 For the purposes of this project, OpenCV will convert the colors of the pixels in an image into a set of values that the software will understand.
-
-\subsection{Kmeans Learning}
-In the latest version of the model, Kmeans is implemented by Python and its third party libraries. Packages, including numpy, sklearn, matplotlib and scipy, are available from Python official site \cite{4:online}. It reads image sets and store them in numpy array as matrix form. By dealing with those matrices, sklearn use modified input data, known as training data, to process Kmean fitting. This will generate the basic Kmean model. Then it uses this model to predict masks related to their original images. By analyzing the output masks with rectangle methods, it will sign white to pixels in the arm area. Relatively, pixels out of arm area will be sign black, which assists the model to generate masks with rational image pattern. 
 
 \subsection{Mask Operation}
 A method of narrowing down the general region where the arm can be found will be used to reduce the strain on the neural networks.
@@ -311,8 +198,8 @@ With the tools that have been designated, sudden changes will not be catastrophi
 Upon project completion, the computer will be able to identify the robot arm in real time.
 At least one of the methods used will beat the straw man approach of k-mean clustering without applying nearest neighbor.
 Ideally, the computer will be able to correctly identify about 90\% of the pixels shown as either part of the arm or not in real time.% with false positives being more acceptable than false negatives.
-Specifically, the 90\% metric should apply to the region of an image with the arm in it, defined as the smallest rectangle in the image that includes the entirety of the arm.
-However, if this arbitrary metric is not achieved, it will show that this approach will not generally be successful and an alternate approach (being developed by another person) will be used instead.
+However, if this arbitrary metric is not achieved, it will show that this approach will not generally
+be successful and an alternate approach (being developed by another person) will be used instead.
 If this method proves successful before the deadline, there are also some stretch goals for the project, such as performing similar methods with objects for the robot to pick up.
 Another stretch goal is to ensure that both methods can run simultaneously in real time.
 
