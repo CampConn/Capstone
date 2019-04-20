@@ -1,0 +1,9 @@
+﻿  FANN_Gen.cpp
+c:\users\connor c\source\repos\fann_gen\fann_gen\fann_gen.cpp(88): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\connor c\source\repos\fann_gen\fann_gen\fann_gen.cpp(91): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\connor c\source\repos\fann_gen\fann_gen\fann_gen.cpp(150): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\connor c\source\repos\fann_gen\fann_gen\fann_gen.cpp(186): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\connor c\source\repos\fann_gen\fann_gen\fann_gen.cpp(303): warning C4018: '<': signed/unsigned mismatch
+c:\users\connor c\source\repos\fann_gen\fann_gen\fann_gen.cpp(317): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\connor c\source\repos\fann_gen\fann_gen\fann_gen.cpp(386): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  FANN_Gen.vcxproj -> C:\Users\Connor C\source\repos\FANN_Gen\Debug\FANN_Gen.exe

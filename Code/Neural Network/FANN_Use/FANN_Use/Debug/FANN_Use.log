@@ -1,0 +1,6 @@
+﻿  FANN_Use.cpp
+c:\users\connor c\source\repos\fann_use\fann_use\fann_use.cpp(65): warning C4244: '=': conversion from 'double' to 'fann_type', possible loss of data
+c:\users\connor c\source\repos\fann_use\fann_use\fann_use.cpp(68): warning C4244: '=': conversion from 'double' to 'fann_type', possible loss of data
+c:\users\connor c\source\repos\fann_use\fann_use\fann_use.cpp(70): warning C4244: '=': conversion from 'double' to 'fann_type', possible loss of data
+c:\users\connor c\source\repos\fann_use\fann_use\fann_use.cpp(71): warning C4244: '=': conversion from 'double' to 'fann_type', possible loss of data
+  FANN_Use.vcxproj -> C:\Users\Connor C\source\repos\FANN_Use\Debug\FANN_Use.exe
