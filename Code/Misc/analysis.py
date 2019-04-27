@@ -86,7 +86,9 @@ def printResults(totalPixels, resolution, truePositive, trueNegative, falsePosit
 truthPath = "Robot Arm Pictures\\Photoshop Masks"
 # implementationMaskPath = "Robot Arm Pictures\\K-means RGB Strawman"
 # implementationMaskPath = "Robot Arm Pictures\\K-means HSV Strawman"
-implementationMaskPath = "Robot Arm Pictures\\Support Vector Machine Images"
+implementationMaskPath = "Robot Arm Pictures\\K-means RGB Nearest Neighbor"
+# implementationMaskPath = "Robot Arm Pictures\\Support Vector Machine Images"
+# implementationMaskPath = "Code\\Neural Network\\FANN_Use\\FANN_Use\\results\\maskcompare"
 rectangleCSVPath = "Data\\rectangles.csv"
 
 rectangleList = getRectangles(rectangleCSVPath)
