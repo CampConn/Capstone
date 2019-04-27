@@ -52,9 +52,11 @@ def performAnalysisOnImages(truthImage, predictionsImage, resolution=307200, x1=
                 # print("Truth Error Coords | Row: " + str(x) + " | " + "Column: " + str(y))
 
     printResults(totalPixels, resolution, truePositive, trueNegative, falsePositive, falseNegative, truthErrors, predictionErrors)
+    # printAccuracyMetricResults(totalPixels, resolution, truePositive, trueNegative, falsePositive, falseNegative, truthErrors, predictionErrors)
 
 def printResults(totalPixels, resolution, truePositive, trueNegative, falsePositive, falseNegative, truthErrors, predictionErrors):
     noRectangleTrueNegative = trueNegative + (resolution - totalPixels)
+    # To do: Round everything using round(<float>, 2)
     print("Total resolution pixels: " + str(resolution))
     print("True positives: " + str(truePositive) + " at " + str(truePositive * 100 / resolution))
     print("True negatives: " + str(noRectangleTrueNegative) + " at " + str(noRectangleTrueNegative * 100 / resolution))
@@ -81,6 +83,9 @@ def printResults(totalPixels, resolution, truePositive, trueNegative, falsePosit
     ))
     print("-----------------------------------------------")
     print()
+
+def printAccuracyMetricResults(totalPixels, resolution, truePositive, trueNegative, falsePositive, falseNegative, truthErrors, predictionErrors):
+    print(str(totalPixels) + "," + str(truePositive + trueNegative) + "," + str(round(((truePositive + trueNegative) * 100 / totalPixels), 2)))
 
 ### Main
 truthPath = "Robot Arm Pictures\\Photoshop Masks"
