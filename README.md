@@ -17,12 +17,15 @@ github only allows files less than 100Mb. there are lots of files are over 200Mb
 'Semantic-Segmentation-CNN' contains the model
 
 I past README.txt from 'Semantic-Segmentation-CNN'
+
 Retrieved From https://github.com/GeorgeSeif/Semantic-Segmentation-Suite 
 
 1. description
+
 choose DeepLabV3 as the model, ResNet101 as the frontend net. There are other frontend nets: MobileNetV2, ResNet50/152, and InceptionV4.
 
 2. prepare
+
 I am using python3.5, tensorflow-gpu 1.13.1, numpy1.16.3 and you can use 'pip install' to install other packages or upgrade packages.
 
 aiming to use gpu, I also use CUDA10.0 and cudnn10.0-v7.5.0.56
@@ -33,6 +36,7 @@ notice that different gpu will ask for different version of CUDA and cudnn. NVID
 it is very slow to train by using cpu, it took me over 30h to train under 70 images.
 
 3. folders
+
 5_5_trial_1 is the first trial. there are checkpoints, accuracy and loss graphs inside.
 
 5_15_trial_2 is the second trial.
@@ -64,6 +68,7 @@ pred.py: use cmd to predict lots of images
 **notice that you may need to change 'path' or 'dir' str in the code to run on your own device
 
 4. commands explain
+
 train
 python train.py --num_epochs 250 --checkpoint_step 6 (6 epoches, 1 checkpoint) --validation_step 1 (validate for each epoch) --dataset trial_3 (the folder contains images) --crop_width 480 --crop_height 480 --batch_size 1 --model DeepLabV3 --frontend ResNet101
 
