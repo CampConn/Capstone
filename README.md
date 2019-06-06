@@ -20,9 +20,11 @@ I past README.txt from 'Semantic-Segmentation-CNN'
 
 Retrieved From https://github.com/GeorgeSeif/Semantic-Segmentation-Suite 
 
+
 1. description
 
 choose DeepLabV3 as the model, ResNet101 as the frontend net. There are other frontend nets: MobileNetV2, ResNet50/152, and InceptionV4.
+
 
 2. prepare
 
@@ -34,6 +36,7 @@ I will put them in the 'prepare' folder.
 notice that different gpu will ask for different version of CUDA and cudnn. NVIDIA affords a list on their site.
 
 it is very slow to train by using cpu, it took me over 30h to train under 70 images.
+
 
 3. folders
 
@@ -66,6 +69,7 @@ train.py: to train
 pred.py: use cmd to predict lots of images
 
 **notice that you may need to change 'path' or 'dir' str in the code to run on your own device
+
 
 4. commands explain
 
