@@ -6,7 +6,7 @@ How to run:
 
 2. then install whl for packages that are going to use. tensorflow is not used in this project, I just uploaded all of my packages folder.
 
-3. open the file and run the kmeans_10_test.py
+3. open the folder and run the kmeans_10_test.py
 
 it will take a while even though the model's been loaded
 
