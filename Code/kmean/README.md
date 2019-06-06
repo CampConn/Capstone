@@ -1,4 +1,4 @@
-this is the kmean for 90% training and 10% testing field
+this is the kmean for 90% training and 10% testing
 
 How to run:
 
