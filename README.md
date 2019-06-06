@@ -43,21 +43,21 @@ it is very slow to train by using cpu, it took me over 30h to train under 70 ima
 
 3. folders
 
-5_5_trial_1 is the first trial. there are checkpoints, accuracy and loss graphs inside.
+'5_5_trial_1' is the first trial. there are checkpoints, accuracy and loss graphs inside.
 
-5_15_trial_2 is the second trial.
+'5_15_trial_2' is the second trial.
 
-checkpoints contains the third trial. around 180 images are used, containing train, validation, and test. also has checkpoints and accuracy.
+'checkpoints' contains the third trial. around 180 images are used, containing train, validation, and test. also has checkpoints and accuracy.
 
-images contains a gif file, which is compressed by serialized 182 images, combining masks and original images to show effects.
+'images' contains a gif file, which is compressed by serialized 182 images, combining masks and original images to show effects.
 
-pred_out is the folder that has predicted masks
+'pred_out' is the folder that has predicted masks
 
-predict_them has the images that are going to be prediced
+'predict_them' has the images that are going to be prediced
 
-Test contains test output and a score file that you can see the performance of the test
+'Test' contains test output and a score file that you can see the performance of the test
 
-trial_3 has the organized files for training, vlidation and testing. class_dict is using RGB 0, 0, 0 as background and 1, 1, 1 as the robotics arm. you can add other colors to represent other objects
+'trial_3' has the organized files for training, vlidation and testing. class_dict is using RGB 0, 0, 0 as background and 1, 1, 1 as the robotics arm. you can add other colors to represent other objects
 
 prepare.py: organize images and labels, like what trial_3 shows
 
