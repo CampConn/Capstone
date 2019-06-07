@@ -11,7 +11,7 @@ All readme's are at the top level for easy access!
 You can read the SVM and Other page [here](https://github.com/CampConn/Capstone/wiki/Code-Freeze-README---SVM-and-Others).
 
 ## Semantic Segmentation CNN model
-with TEST accuracy over 98%
+with TEST accuracy over 98% (no rectangle refining)
 
 model is in the link: https://drive.google.com/open?id=1WAAC2q4yd6iZeXbE57m-unSpTTf-YlQy 
 
