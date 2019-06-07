@@ -21,7 +21,7 @@ github only allows files less than 100Mb. there are lots of files are over 200Mb
 
 'Semantic-Segmentation-CNN' contains the model
 
-I past README.txt from 'Semantic-Segmentation-CNN'
+I paste README.txt from 'Semantic-Segmentation-CNN'
 
 Retrieved From https://github.com/GeorgeSeif/Semantic-Segmentation-Suite 
 
