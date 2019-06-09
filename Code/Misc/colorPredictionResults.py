@@ -1,4 +1,5 @@
 import csv                          # CSV handling
+import math                         # For floor()
 from sklearn import svm             # Support Vector Machine
 from joblib import dump, load       # SVM Model Persistence
 
@@ -36,7 +37,7 @@ def writeToCSV(dataNestedDict, csvFilePath):
 
 ### Main
 trainingPixelsCSV = "Data\\Formatted Pixel Data\\trainingPixelsGroup1.csv"
-outputPixelCSV = "Data\\ColorPredictionResults.csv"
+outputPixelCSV = "Data\\ColorPredictionResults" #4.csv"
 
 previousGroup = "1"
 pixelDictionary = dict()
@@ -50,6 +51,8 @@ totalsPixelList = dict([
     ("7p", 0), ("7t", 0),
     ("tp", 0), ("tt", 0)
 ])
+clusterSize = 256
+outputPixelCSV += str(clusterSize) + ".csv"
 
 for group in range(1, 8):
     # print("Group: " + str(group) + " | Prev Group: "+ str(previousGroup))
@@ -59,7 +62,7 @@ for group in range(1, 8):
     # print("Training Path: " + trainingPixelsCSV)
 
     for pixel in pixelList:
-        key = pixel['red'] + '-' + pixel['green'] + '-' + pixel['blue']
+        key = str(int(math.floor(float(pixel['red']) / clusterSize))) + '-' + str(int(math.floor(float(pixel['green']) / clusterSize))) + '-' + str(int(math.floor(float(pixel['blue']) / clusterSize)))
         if(key in pixelDictionary):
             pixelDictionary[key][str(group) + "-" + pixel['class']] += 1
             pixelDictionary[key]["t-" + pixel['class']] += 1
