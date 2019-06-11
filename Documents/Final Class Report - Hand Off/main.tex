@@ -37,24 +37,48 @@
 \maketitle
 
 \begin{abstract}
-input
+The report explains many details regarding the Robotic Vision project.
+It acts as a depiction of the Robotic Vision project, including triumphs and struggles.
+Many of the changes made are detailed, as well as a basic understanding of the machine learning models implemented.
+
 \end{abstract}
 
 \IEEEdisplaynontitleabstractindextext
 \IEEEpeerreviewmaketitle
 
 \newpage
-\pagebreak
 \tableofcontents
-\pagebreak
 
+\newpage
 \section{Introduction}
----------
+%---------Who requested it? \\
+%---------Why was it requested? \\
+%---------What is its importance? \\
+%---------Who was/were your client(s)? \\
+%---------Who are the members of your team? \\
+%---------What were their roles? \\
+%---------What was the role of the client(s)? (I.e., did they supervise only, or did they participate in doing development) \\
+
+\noindent
+The goal of this project was find and implement a method to identify a robot arm with 90\% accuracy.
+This metric was met initially with an artificial neural network then with a convolutional neural network.
+Our client, Cindy Grimm, wants this project developed to fit into her larger project.
+The larger project is to create a way for people to remotely access the arm and perform experiments in the hopes of improving hand grasping mechanics.
+However, in order for the arm to function in this way autonomously, it needs to have a trained vision system to guide its movements. \\
+
+\noindent
+Connor Campbell, Chase McWhirt, and Jiawei Mo all created different machine learning implementations to be able to identify the arm based on 640x480 pixel frames.
+Respectively, they implemented the artificial neural network, support vector machine, and K-means clustering implementations.
+Connor represented the group as team leader, divided data in nearest neighbor groupings, and helped ensure quality documentation.
+Chase organized and kept track of project goals, created extra scripts to be used on all implementations, and wrote group emails.
+Jiawei researched computer vision topics that supported implementations, implemented an alternative, deep-learning convolutional neural network, and intiated many of the group reports.
+Cindy's role was typically to supervise but she shared knowledge when requested.
+
 
 \newpage
 \section{Requirements}
----------Include newest copy of the requirements document. Be sure to include the CHANGE TABLE showing updates to original requirements. \\
----------Update: Final Gantt Chart as a record of what happened when.
+%---------Include newest copy of the requirements document. Be sure to include the CHANGE TABLE showing updates to original requirements. \\
+%---------Update: Final Gantt Chart as a record of what happened when.
 
 \begin{abstract}
 As robots and artificial intelligence become increasingly important in the modern age, they will need to be able to interact with their environment on their own, and computer vision is an integral part of a robot's understanding of its surroundings.
@@ -211,7 +235,7 @@ Thus, a linear regression analysis was chosen.
 
 \newpage
 \section{Design}
----------Include newest copy of the design document. Be sure to include the CHANGE TABLE showing updates to original requirements.
+%---------Include newest copy of the design document. Be sure to include the CHANGE TABLE showing updates to original requirements.
 
 \begin{abstract}
 Robotic vision is an advanced topic that requires proper planning and consideration before attempting. In this project, a computer will be taught to recognize a robotic arm in an image by first narrowing down the region of the image it is likely in, then scanning the area with a neural networks. Different solutions as well as technologies used for achieving them are discussed.
@@ -496,12 +520,112 @@ Another stretch goal is to ensure that both methods can run simultaneously in re
 
 
 \newpage
-\section{Tech Review 1}
----------Make sure each team member's tech review is labeled with author's name and included.
-\subsection{Connor Campbell}
+\section{Connor Campbell's Tech Review}
+Note: Due to merging issues, references in this document only refer to its original References
+
+\subsection{Introduction}
+This project involves teaching a computer to grab objects with a robotic hand. To do this, the computer must
+have an adequate understanding of the environment. The computer will be trained to identify objects through
+computer vision and machine learning using a neural network. However, there are many different kinds of
+neural networks and a few different ways to train them.
+
+\subsection{Neural Network Structure}
+There are many types of neural networks that are good at fulfilling different jobs. Three particularly common
+ones include Feed Forward, Recurrent, and Convolutional.
+
+\subsubsection{Feed Forward Neural Networks}
+Feed Forward is perhaps the most generic of neural networks [1]. Feed Forward neural networks consist of
+three parts: the input layer, the optional hidden layer (or layers), and the output layer. Each layer consists of
+several neurons, which take in values from the previous layer, multiplies them by weights, then outputs the
+value to all neurons on the next layer, usually after applying a function that maps the result to a certain range
+[1]. The input layer is the exception, as it simply provides the input values to the first hidden layer.
+Most neural networks (and all of the ones discussed in this review) follow the same basic structure, with
+different types implementing additional features, such as memory. The advantage of Feed Forward networks
+is their simplicity. If a given problem can be solved by a Feed Forward network, it may be easier to implement
+than other solutions.
+
+\subsubsection{Recurrent Neural Networks}
+The primary difference between Recurrent and Feed Forward networks is that the neurons in the hidden layers
+of an recurrent neural networks receive their own output as input in the next iteration [1]. This gives the
+network a sense of memory, which gives them an advantage in problems where the program needs to make
+several related decisions. If the best output for a given input depends on either the previous input or output, a
+recurrent neural network is probably worth considering.
+
+\subsubsection{Convolutional Neural Networks}
+Convolutional neural networks are frequently used in computer vision [1]. Due to the sizes of images, fully
+connected networks (in which each neuron takes input from all of the neurons in the previous layer) may
+require far too many calculations [2]. To alleviate this problem, convolutional neural networks use specialized
+neuron layers called convolutional layers and Pooling Layers.
+
+While most layers in neural networks are fully connected, convolutional layers are not [2]. Each neuron
+only looks at a specific range within the image, and several neurons are connected to that range, looking for
+different patterns [2]. Pooling Layers are used to reduce the data being worked on between convolutional layers
+by removing unnecessary information [2]. These specialized layers allow the network to examine large input
+fields (such as the color values for the pixels in a large image) without overworking.
+
+\subsection{Network Training}
+An important detail in neural networks is the weights neurons use in calculations. These determine how the
+program processes the inputs into the outputs. These values can not be reasonably determined by a human, as
+there are too many interconnected parts. As such, they are initially chosen at random and then adjusted through
+a training process, which can be done in a variety of ways.
+
+\subsubsection{Back Propagation}
+Back propagation is the most common form of training for neural networks. First, the network is given an input
+for which the desired output is known. The network calculates an output with its current weights and that
+output is compared to the desired one to determine the error [3]. Based on the output of the previous layer, the
+weights are adjusted so that the output becomes closer to the desired output. Finally, an error for the previous
+layer is determined based on the output layer's error and the new weights, and the process is repeated for that
+layer [3]. Hence the name "back propagation" comes from stepping backwards through the network.
+
+This algorithm is especially efficient since it can be done through matrix operations. The layers of a network
+can be modelled as a series of matrices that are multiplied to an input vector. Back propagation can be performed
+in a similar manner.
+
+\subsubsection{Genetic Algorithm}
+Neural networks can also be trained using genetic algorithms. Genetic algorithms mimic natural selection
+by generating a population of solutions at random, eliminating less successful solutions, and reproducing
+successful ones with slight alterations. Over time, the solutions become better and better.
+
+Genetic algorithms have an advantage in situations where the exact desired output for a given input is
+unknown. For instance, consider a neural network being trained to play a game or otherwise compete against
+a human or other program. It may not be possible to judge each decision or move that it makes in any
+scenario, making back propagation impractical. However, the fitness of the network can be directly measured
+and compared to others based on its win rate.
+
+Another major advantage to the genetic algorithm is that both the weights and the structure of the network
+can be learned. With back propagation, the number of hidden layers and the number of neurons per layer are
+predetermined by the programmer, but it can be rather arbitrary what structure is best for a given problem.
+Genetic algorithms can adjust the structure as well as the weights, potentially making better decisions than the
+programmer.
+
+Genetic algorithms have some disadvantages. They effectively train a large number of neural networks at a
+time, requiring much more memory and computing power.
+
+\subsection{Conclusion}
+Since this project involves computer vision, and convolusional networks are specifically designed for that, our
+solution should probably incorporate something similar to that. It may be useful for the computer to take
+previous input into consideration over time, which would encourage the use of recurrent neurons in the feed
+forward layers. However, our program will already have access to the information that would provide.
+
+For this project, the desired outputs can be known, so the genetic algorithm would be a poor choice.
+
+\subsection{References}
+[1]	K. Maladkar, 6 Types of Artificial Neural Networks Currently Being Used in ML, Analytics India Magazine, 31-Aug-2018.
+[Online]. Available: https://www.analyticsindiamag.com/6-types-of-artificial-neural-networks-currently-being-used-in-todaystechnology/.
+[Accessed: 01-Nov-2018].
+
+\noindent
+[2]	A. Karpathy, Convolutional Neural Networks (CNNs / ConvNets), in CS231n Convolutional Neural Networks for Visual Recognition.
+
+\noindent
+[3]	Nielsen and M. A., Neural Networks and Deep Learning, Neural networks and deep learning, 02-Oct-2018. [Online]. Available:
+http://neuralnetworksanddeeplearning.com/chap2.html. [Accessed: 01-Nov-2018].
+
+
 
 \newpage
 \section{Chase McWhirt's Tech Review}
+Note: Due to merging issues, references in this document only refer to its original References
 \begin{abstract}
 In this technology review, three technical ideas for the robotic grasping will be considered with three different technologies or plans of implementation each.
 The three ideas that will be considered are data collection, qualifying data, and analyzing data (specifically, neural network frameworks geared towards analyzing data).
@@ -615,11 +739,11 @@ Another critical downside is that its not as fast as other libraries [5].
 \subsubsection{Theano}
 This is a very flexible neural network library.
 It also has the benefit of age and having lots of documentation [5].
-“Theano allows you to define, optimize, and evaluate mathematical expressions involving multi-dimensional arrays efficiently” [4].
+"Theano allows you to define, optimize, and evaluate mathematical expressions involving multi-dimensional arrays efficiently" [4].
 Many major neural network libraries build on top of Theano, which could be beneficial in narrowing the scope towards our project.
 
 \subsubsection{Caffe}
-“This library is specially optimized for vision tasks... it is often among the fastest libraries when benchmarked on vision tests” [5].
+"This library is specially optimized for vision tasks... it is often among the fastest libraries when benchmarked on vision tests" [5].
 This library seems like it's well suited to the type of project we're trying to complete.
 Since it's also very fast, it has the benefit of being test friendly.
 This means, we can take multiple data approaches without the need to push back deadlines.
@@ -653,12 +777,12 @@ Thus, I my overall suggestion is to take pictures ourselves, process them with G
 [5]	https://www.quora.com/What-is-the-best-open-source-neural-network-library
 
 \newpage
-\section{Tech Review 3}
-\subsection{Jiawei Mo}
-\subsubsection{Introduction}
+\section{Jiawei Mo's Tech Review}
+
+\subsection{Introduction}
 My role of this project is to build up the graphic scene and deal with adjusting lighting changes of the object. It is a repeatable process since the machine learning algorithm will store precise data and drop lower reliable cases. Then, it will circle the processes to improve the accuracy of stored image data. 
 
-\subsubsection{Target}
+\subsection{Target}
 Unlike humans, robots do not have a sense of touch, and rely on cameras for vision. As such, computer vision is an important part of designing robots to interact with the world on their own. Our task is part of an ongoing project attempting to improve a computers understanding of a three dimensional environment through machine learning and computer vision; developing computer algorithms to help robotic arms determine the appropriate path to grasp an object. At the moment, the computer is using two stationary cameras placed at different angles facing the arm and the object, and analyzing their feedback to determine the objects position and type. \\
 
 \noindent
@@ -670,7 +794,7 @@ Another problem is when the robotic hand gets in the way of the cameras. Since t
 \noindent
 The end goal of this project is to create a software that will accurately identify a robotic arm in a given image. Several possible solution plans have been created with the help of the client. The client is going to take many photos (as HSV image type) of the robotic arm and supply a mathematical description of the arm's pose for each photo. Next, a straw man solution will be generated by running a k-means clustering method on all of the images, which will yield a naive method for identifying parts of the robotic arm. This will act as a base line: the other solutions will be considered successful if the prove to be better than the straw man solution.
 
-\subsubsection{Detailed Pieces}
+\subsection{Detailed Pieces}
 This section will demonstrate three key pieces of the project and brainstorm other optional technologies that can solve the same problem.
 
 \begin{enumerate}
@@ -713,16 +837,16 @@ This section will demonstrate three key pieces of the project and brainstorm oth
     \end{enumerate}
 \end{enumerate}
 
-\subsubsection{Conclusion}
+\subsection{Conclusion}
 This essay reviews three technologies that are used in the project and introduces other implementable solutions. A comparison of each section gives the reason why the technology is chosen and whether another technology can replace it. 
 
 
 \newpage
 \section{Weekly Blog}
----------all team members' posts \\
-formatted nicely and clearly distinct from one another \\
-include all members posts, clearly distinct, clearly organized \\
-scrub blog posts of information you don't want others to read \\
+%---------all team members' posts \\
+%formatted nicely and clearly distinct from one another \\
+%include all members posts, clearly distinct, clearly organized \\
+%scrub blog posts of information you don't want others to read \\
 
 \subsection{2018 Fall}
 \begin{center}
@@ -1467,23 +1591,67 @@ I keep labeling more samples. Right now, I have around 60 images and it will inc
 
 \newpage
 \section{Final Poster}
----------scaled to fit on a color-printed on a single 8.5"x11" paper.
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=1.\textwidth]{PosterNewDraft.jpg}
+  \end{center}
+  \caption{Expo Poster}
+\end{figure}
 
 \newpage
 \section{Project Documentation}
-I.e., user guide, installation guide, or variation on user guide) \\
----------How does your project work? (Could include the following...) \\
-What is its structure? \\
-What is its Theory of Operation? \\
-Block and flow diagrams are good here. \\ \\
+%I.e., user guide, installation guide, or variation on user guide) \\
+%---------How does your project work? (Could include the following...) \\
+%* What is its structure? \\
+%* What is its Theory of Operation? \\
+%* Block and flow diagrams are good here. \\
 
+%---------How does one install your software, if any? \\
+%---------How does one run it? \\ 
+%---------Are there any special hardware, OS, or runtime requirements to run your software? \\
+%---------Any user guides, API documentation, etc. \\
 
----------How does one install your software, if any? \\
----------How does one run it? \\ 
----------Are there any special hardware, OS, or runtime requirements to run your software? \\
----------Any user guides, API documentation, etc. \\
+%---------This needs to be detailed enough to recreate and/or use your project!
+\subsection{Neural Network Guide}
 
----------This needs to be detailed enough to recreate and/or use your project!
+\subsubsection{Structure and Theory}
+There are two programs for neural networks: FANN\_Gen and FANN\_Use. FANN\_Gen is use to generate and train neural networks using provided data, while FANN\_Use runs a given neural network over an image to produce a mask. Both of these programs were developed in C++.
+
+\subsubsection{Installation}
+The programs were developed in Microsoft Visual Studio, and the simplest way to install them is to open the provided projects in Visual Studio and compile them there. There are a few macros that may be changed in order to utilize old code that experimented with other options, but they are not all stable in the current version, and further changes to the code would be necessary to utilize them.
+
+For FANN\_Gen:
+\begin{enumerate}
+\item CSV\_DATA \\
+If set to 1, uses data from CSVs generated using the createDataSet.py script in Code->Misc. Setting to 0 will cause it to run in image mode, however that was meant for earlier experiments and only scanned a single image whose name was hard coded in.
+
+\item NEW\_NET  \\
+If set to 1, the program will generate a new network to train from scratch. If set to 0, the program will load in a preexisting network and continue to train it
+
+\item HSV \\
+If set to 1, converts image data to HSV and uses that for training and testing network. If set to 0, uses RGB. This was also meant for earlier experiments, and if RGB is used with CSV\_DATA set to 1, the network will be generated with its outputs reverse relative to what FANN\_Use will be expecting for RGB mode
+
+\item NORMALIZE \\
+If set to 1, image values are normalized from -1 to 1. If set to 0, values are used as-is (generally 0 to 255). Recommended to keep at 1.
+
+\item ACC \\
+The desired error frequency. If a given set of data is taking too long to train, or can't seem to get to the desired error, this may be adjusted. Be sure to multiply desired error frequency by the number of output nodes (as the code currently is, that would be 2).
+\end{enumerate}
+
+For FANN\_Use, the only macro is HSV, which should be set to the same value FANN\_Gen was set to when the network was generated
+
+\subsubsection{Running}
+When running FANN\_Gen, two csv files generated by the createDataSet.py script in Code->Misc should be in the same directory: trainingPixels.csv and testingPixels.csv. These files are used for training and testing the network, respectively. The result of the program should be a neural network saved in the file mask.net. If the NEW\_NET macro is set to 0 (it is set to 1 by default), the file mask.net should also be in the directory, presumably generated by a previous running of the program. 
+
+When running FANN\_Use, the image to be analyzed (image.jpeg) and a neural network (mask.net) should be present in the directory. It also takes in 4 command line arguments defining the pixels that should be analyzed in the following order: left-most boundary, top-most boundary, right-most boundary, bottom-most boundary. Anything outside the boundaries will be assumed to be black (ie, not part of the arm). To include the whole picture, enter
+\begin{verbatim}
+    0 0 640 480
+\end{verbatim}
+
+\subsubsection{API Documentation}
+\begin{enumerate}
+    \item FANN: http://leenissen.dk/fann/wp/
+\end{enumerate}
 
 \subsection{Kmeans User Guide}
 \subsubsection{Structure and Theory}
@@ -1507,6 +1675,62 @@ The model can run on Windows, macOS and Linux. Notice that a Linux system need G
 
 \subsubsection{Notation}
 There are some lines are commented out in python files. They are NOT useless. They are data pre-process and training process. The reason why commenting out them is that this speeds up the program running. The pre-processed data and trained models are saved in .npy files. It is convenient and efficient to reuse them, instead of running the same computation again. If another training is needed, it's better to look through those lines. 
+
+
+\subsection{Support Vector Machine}
+\subsubsection{Structure and Theory}
+There are three main scripts that allow the support vector machine to function.
+First, there's svmCreate.py, which creates 7 models based on 7 data sets (trainingPixelsGroup[X].csv).
+Second, there's svmPredict.py, which makes each respective model create masks from images.
+Last, there's svmTest.py, which makes each respective model make predcitions on their test set.
+
+\subsubsection{Installation}
+\begin{verbatim}
+    Install Python 3.5 (https://www.python.org/downloads/release/python-350/).
+    Run this in your preferred command line.
+    python -m pip install -U pip matplotlib numpy scikit-learn joblib
+\end{verbatim}
+
+\subsubsection{Running}
+It's worth noting before running some scripts, configuration is required.
+All run commands are expected to be run from the top level directory (Capstone).
+
+\begin{enumerate}
+\item svmCreate.py
+\begin{verbatim}
+    python Code\SVM\svmCreate.py
+\end{verbatim}
+This creates 7 models from the 7 trainingCSVs located in 'Data/Formatted Pixel Data'.
+
+\item svmTest.py
+\begin{verbatim}
+    python Code\SVM\svmTest.py
+\end{verbatim}
+Tests 7 models on the the 7 testingCSVs located in 'Data/Formmatted Pixel Data'.
+All output is printed to the commandline.
+You can specify an output file (to bash) by adding '> fileName.txt' at the end of the call.
+
+\item svmPredict.py
+\begin{verbatim}
+    python Code\SVM\svmPredict.py
+\end{verbatim}
+Will use the 7 models to create 21 predicted masks.
+They will always be saved to the 'Support Vector Machine Images' directory.
+\end{enumerate}
+
+\subsubsection{Special Hardware}
+Special hardware such as GPUs.
+Without any multithreading, training takes approximately 8 hours using the linear SVM kernel.
+Since everything is in Python 3.5, it runs anywhere that has Python 3.5.
+
+\subsubsection{API Documentation}
+\begin{enumerate}
+\item SVM (scikit-learn API): https://scikit-learn.org/stable/modules/svm.html
+
+\noindent
+\item Saving SVM models (Joblib example): https://scikit-learn.org/stable/modules/model\_persistence.html
+
+\end{enumerate}
 
 
 \subsection{Semantic Segmentation Convolution Neural Network User Guide}
@@ -1563,24 +1787,217 @@ These statements are also posted in README on github site. Followings are traini
 \item python predict.py --image 'image path' --checkpoint\_path .\textbackslash checkpoints\textbackslash latest\_model\_DeepLabV3\_trial\_3.ckpt (different directions for different checkpoints) --crop\_height 480 --crop\_width 640 --model DeepLabV3 --dataset trial\_3 
 \end{enumerate}
 
+\subsection{``Misc''}
+\subsubsection{Structure}
+There are four miscellaneous scripts that support each implementation.
+First, there's analysis.py which compares two sets of masks (truths versus predictions).
+Second, maskToRectangle.py which creates a .csv with two pairs of x,y coordinates from a set of masks.
+Third, createDataSet.py creates seven datasets from photos and is how we apply nearest neighbor functionality.
+Fourth, is colorPredictionResults.py which acts as a rudamentry prediction method.
+
+\subsubsection{Installation}
+\begin{verbatim}
+    Install Python 3.5 (https://www.python.org/downloads/release/python-350/).
+    Run this in your preferred command line.
+    python -m pip install -U pip matplotlib numpy scikit-learn joblib
+\end{verbatim}
+
+\subsubsection{Running}
+It's worth noting before running some scripts, configuration is required.
+All run commands are expected to be run from the top level directory (Capstone).
+
+\begin{enumerate}
+\item analysis.py
+Configuration required to run analysis.
+In order to perform an analysis on your 21 images, you need to edit analysis.py.
+Search for '\#\#\# Main'.
+Set 'implementationMaskPath' to your folder (containing your 21 predicted masks).
+(Note, if you're implementationMaskPath is already available, uncomment it and comment out the active one.)
+\begin{verbatim}
+    python Code\Misc\analysis.py
+\end{verbatim}
+Output will be 21 different picture (in the rectangle).
+You can dump this into a txt (using Bash) by adding '> fileName.txt' to the bash command.
+
+\item maskToRectangle.py
+\begin{verbatim}
+    python Code\Misc\maskToRectangle.py
+\end{verbatim}
+Will analyze the photoshop masks and create a csv containing two (x,y) coordinates and associated file.
+The (x,y) coordinates will create a rectangle (inclusive).
+This script creates a simulation of the rough masks that we're expecting as input.
+
+\item createDataSet.py
+\begin{verbatim}
+    python Code\Misc\createDataSet.py
+\end{verbatim}
+Will create 7 CSVs for training and testing (each).
+This is a standard set to be used for the 7 group implementation models.
+Essentially, every three images will be collected into one list of dictionaries.
+The list will then be shuffled randomly and then split 9:1.
+90\% of pixels from the three images will be used for training.
+10\% of pixels from the three images will be used for testing.
+The random shuffling is currently seeded and will always produce the same output.
+
+\item colorPredictionResults.py
+This requires configuration of the cluster size the pixels are sorted into.
+\begin{verbatim}
+    python Code\Misc\colorPredictionResults.py
+\end{verbatim}
+Partitions every pixel, based on their RGB values, into clusters.
+These clusters then, in a sense, perform a popular vote.
+Other pixels that would fall into that cluster would be classed by the popular vote.
+(It should also be noted that, while surprisingly accurate, this method is highly overfitted.)
+\end{enumerate}
+
+\subsubsection{Special Hardware}
+Since everything is in Python 3.5, it runs anywhere that has Python 3.5.
+
+\subsubsection{API Documentation}
+\begin{enumerate}
+\item NumPy API: https://docs.scipy.org/doc/numpy/index.html
+
+\noindent
+\item MatPlotLib API: https://matplotlib.org/
+
+\noindent
+\item Python Built-In API: https://docs.python.org/3.5/library/
+Built in functions and the libraries csv, sys, os, rand, math were all used.
+
+\end{enumerate}
 
 \newpage
 \section{Recommended Technical Resources for Learning More}
----------What web sites were helpful? (Listed in order of helpfulness.) \\
----------What, if any, reference books really helped? \\
----------Were there any people on campus that were really helpful?
+%---------What web sites were helpful? (Listed in order of helpfulness.) \\
+%---------What, if any, reference books really helped? \\
+%---------Were there any people on campus that were really helpful?
 
 \begin{enumerate}
+
+\item API Documentation: \\
+https://scikit-learn.org/stable/modules/svm.html \\
+https://docs.scipy.org/doc/numpy/index.html \\
+https://docs.python.org/3.5/library/ \\
+https://scikit-learn.org/stable/modules/model\_persistence.html \\
+https://matplotlib.org/ \\
+http://leenissen.dk/fann/wp/
+
 \item OpenCV tutorial: https://docs.opencv.org/3.4/d9/df8/tutorial\_root.html 
+
 \item Learning Support Vector Machines: https://youtu.be/\_PwhiWxHK8o
+
 \item Lecture 11 | Detection and Segmentation from Stanford: https://youtu.be/nDPWywWRIRo
+
+\item String Modulo Operator Tutorial: https://www.python-course.eu/python3\_formatted\_output.php
+
+\item Removing large files from .git: https://stackoverflow.com/questions/2100907/how-to-remove-delete-a-large-file-from-commit-history-in-git-repository
+
 \end{enumerate}
 
 
+\newpage
 \section{Conclusions and Reflections}
----------each team member answers all questions individually
+%---------each team member answers all questions individually
 \subsection{Connor}
-\subsection{Chase}
+
+\subsubsection{What technical information did you learn?}
+I've learned quite a bit about neural networks. 
+Before joining the project, my experience in them was limited to videos on the internet, which generally either provided more abstract theory, or utilized a relatively niche version. 
+I was under the impression that using a genetic algorithm to train a network was common, since many of the videos dealt with video games, which required flexible structures that didn't necessarily know the best possible output at any given time. 
+During the tech review, I quickly realized that that was essentially the only time such a method would ever be used and that back propagation was the preferred method for almost any other scenario.
+
+
+\subsubsection{What non-technical information did you learn?}
+I learned a lot about myself and my work ethic. 
+It was really hard to motivate myself to work when I didn't have a set schedule of what times to sit down and get stuff done. 
+Before this year, I had considered finding a job where I could work from home, but now I think that I benefit a lot from having a specific time and place to be in for working.
+
+As a side note, I also got some experience in writing technical documents.
+
+\subsubsection{What have you learned about project work?}
+Planning ahead is incredibly important. 
+Not only in what needs to be done, but in when to get certain parts done. 
+It can be hard to feel motivated when you have a vague idea of what needs to be done over a long period of time, so it's useful to have smaller, discrete, incremental goals. 
+There were times when I had a specific idea of what I needed to get done and when, and I was able to work hard and quickly at those points, but if I wasn't sure exactly what I needed to do, or if the next thing to do was a ways away when I had other homework, it was easy to lose track of myself.
+
+
+\subsubsection{What have you learned about project management?}
+I went over this in the previous section: smaller, discrete goals over shorter periods of time are easier to focus on.
+
+
+\subsubsection{What have you learned about working in teams?}
+It can be frustrating.
+Before elaborating, I want to be absolutely clear that this is by no means the fault of my co-workers.
+I found that I'm a lot better at communicating in person than over the internet.
+When we met in person, I felt more confident in saying what I wanted or needed to say and participating in the conversation, but online, I had a tendency to type slowly or be too concerned with my exact phrasing or sending a message in the middle of a conversation, that I often ended up being a lot quieter than I wanted to be.
+Also, I've always had trouble taking initiative in group projects, and I think that was a major weakness of mine, especially early on when we were all unfamiliar with each other and still unsure about certain parts of the project.
+
+
+\subsubsection{If you could do it all over, what would you do differently?}
+
+If I'm honest, there were times when I thought I would've been happier taking on a different project. 
+When I was told to pick projects based on interest rather than familiarity, I ended up signing up for something I knew almost nothing about. 
+I wouldn't have wanted something trivial, but something I'm a little more familiar with probably would have gone more smoothly.
+
+As for this project on its own, the first thing that comes to mind would be taking more initiative early on, and trying to be more organized. 
+Like I said for the project work section, I probably would have been more focused overall if I had defined more specific goals and time frames for my parts of the project. 
+
+
+\subsection{Chase McWhirt}
+\subsubsection{What technical information did you learn?}
+I learned a lot about Python, which was one of my weakest languages.
+After working it more, I've come to appreciate it as a language.
+I learned how to implement a support vector machine.
+Eventually, I also learned what it actually was and how to distinquish it from the other implementations.
+Going more fine grain, I learned about various APIs, how they interact, and why they're fairly popular in machine learning applications.
+I also practiced some version control and data interpretation mechanics I already knew.
+
+\subsubsection{What non-technical information did you learn?}
+I learned the value of standing up for myself.
+At Expo, I had to practice taking some pride in a project I put a lot of work into, even if it can be difficult to define the value or magnitude of the project.
+I learned to manage many different parts of the project.
+I also learned to delegate instead of letting those pieces destroy me.
+
+\subsubsection{What have you learned about project work?}
+Project work can often times be rewarding.
+The rewards of cooperation are often more work being completed and a more well rounded project.
+It has its downsides as well.
+In some ways, it can be less efficient.
+Thus, you often have to take intiative in a variety of ways to mitigate those inefficiencies.
+
+\subsubsection{What have you learned about project management?}
+You can't force a workflow on a project.
+Some workflows also aren't always the best fit for a project.
+For example, I spent a lot of time creating a bunch of commits and comments regarding program functionality.
+However, this was a redundant exercise as the project was split into many divisions and the group never had to work on each others' code.
+In this scenario, I learn to take on more than I could handle, and then delegate when applicable.
+This came up the most often in written portions as fall term was spent designing and dividing the project into equal parts.
+In a sense, I learned to manage up and across.
+
+\subsubsection{What have you learned about working in teams?}
+It is extremely difficult to divide work equally among a team.
+Often, the best approach is to divide work such that everyone does what they're good at.
+For example, if there are two people on a team, and they have a code assignment and a writing assignment, it's better to give one the code assignment and the other the writing assignment.
+If you split the code in half and the writing in half, if one person is better at writing and the other at coding, they'll feel as if underperforming in their weak areas.
+Ironically, doing the easiest pieces for yourself often makes the group more productive, as long as there's variance in specialty.
+
+\subsubsection{If you could do it all over, what would you do differently?}
+I genuinely don't know what I would do differently.
+It's inevitable that despite setting requirements early and thoroughly, there will be pressure to change them and/or ignore them entirely.
+In a way, it makes you feel as if the best answer is to spend more time defining requirements.
+However, after a certain point, it becomes pointless and redundant to do such.
+Honestly, the best piece of insight I got was from my boss.
+To paraphrase, it's best to ask specific questions rather to over promise.
+In a sense, abstract clients out of the development process as much as possible.
+For a related example, imagine a person is tasked with redesigning a car.
+They ask drivers what there biggest complaints are about driving the current model of car.
+They respond that it doesn't accelerate fast enough, it has a bad stereo, and that the cup holders are too small.
+The designer creates a new model of the car.
+It has a better stereo and the cup holders securely hold 7-11 Big Gulps.
+Drivers are much more likely to be satisfied with this new model rather than disappointed the acceleration remained unchanged.
+In this sense, I wish I had picked a project I knew well enough already that I wouldn't need to rely on guidance from the client.
+In a way, I let the popularity of machine learning draw me towards this project when I likely could have done other projects and learn just as much without some of the struggles I had with this project.
+
 
 \subsection{Jiawei Mo}
 \subsubsection{What technical information did you learn?}
@@ -1601,11 +2018,101 @@ I found that information sharing makes team work more efficient. It is a fact th
 \subsubsection{If you could do it all over, what would you do differently?}
 If I could do it all over, I would advise our client that a Convolution Neural Network would be a better choice to deal with this problem. Therefore, we can use this method to improve performance right after Kmeans, SVM and Neural Network trials. Before the beginning of the implementation, I had reviewed some paper that indicated high performance of image recognition by using Convolution Neural Network. This was what I used in the end of this term to produce a good mask.
 
-
+\newpage
 \section{Appendix}
 \subsection{Appendix 1: Essential Code Listings}
-\subsection{Appendix 2: Anything else you want to include. Photos, etc.}
 
+\subsubsection{Preparing and Generating Neural Networks with FANN}
+The code for generating networks with FANN is actually rather simple. Once you have your network set up, you read in data from a file, train it, and test its effectiveness on the test data. There are several variables and options that could be changed when setting up the network. Below are a few settings that were experimented with:
+
+\begin{verbatim}
+	const float learning_rate = 0.7f;
+	const unsigned int num_layers = 5;
+	const unsigned int num_input = 3;
+	const unsigned int num_hidden = 4;
+	const unsigned int num_output = 2;
+
+	net.create_standard(num_layers, num_input, num_hidden, num_hidden, num_hidden, num_output);
+
+	net.set_learning_rate(learning_rate);
+
+	net.set_activation_steepness_hidden(1.0);
+	net.set_activation_steepness_output(1.0);
+
+	net.set_activation_function_hidden(FANN::SIGMOID_SYMMETRIC_STEPWISE);
+	net.set_activation_function_output(FANN::SIGMOID_SYMMETRIC_STEPWISE);
+
+	net.set_train_stop_function(FANN::STOPFUNC_BIT);
+\end{verbatim}
+
+In particular, the structure of the network (number of layers and number of nodes per layer) has a big effect on the accuracy, training time, and whether it is over-fitted. The train stop function line indicates that accuracy was determined based on how many output nodes gave a response outside an accepted range, as oppose to the default, where accuracy is determined by how different the response was from the desired value.
+
+
+
+\subsubsection{Scikit-Learn Support Vector Machines}
+The core code that you have to understand is actually available directly in the API documentation.
+To create a model for classification, most machine learning algorithms take two inputs.
+X in the copied example is a vector of data samples with the dimensions [m-samples, n-features].
+y is a vector of classes (as in classifications, not object classes) with dimension [m-samples].
+This sample can be practiced directly in a Python terminal.
+\begin{verbatim}
+    >>> from sklearn import svm
+    >>> X = [[0, 0], [1, 1]]
+    >>> y = [0, 1]
+    >>> clf = svm.SVC(gamma='scale')
+    >>> clf.fit(X, y)  
+    SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0,
+        decision_function_shape='ovr', degree=3, gamma='scale', kernel='rbf',
+        max_iter=-1, probability=False, random_state=None, shrinking=True,
+        tol=0.001, verbose=False)
+\end{verbatim}
+In Python, the $>>>$ represents terminal input.
+We can see that with their X and y, they have two data points with two features.
+Data point [0, 0] has class 0 while data point [1, 1] has class 1.
+It's also extremely important to ensure quality in loading your data before you start ``fitting'' a model.
+Even more importantly, you should have a way to save your model, either with data serialization, or another method, or else you'll have wasted time with this much code.
+
+After you've saved your model for repeated uses, you can make predictions.
+\begin{verbatim}
+    >>> clf.predict([[2., 2.]])
+    array([1])
+\end{verbatim}
+Understanding this code structure is critical to building a support vector machine (but not necessarily understanding support vector machines themselves).
+As an exercise, why do you think making a class prediction of [2, 2] yielded class 1 and not 0?
+
+\subsubsection{Kmeans - Flatten Matrix}
+Moreover, it is important to flatten the high dimensional matrix as a one dimension array structure. The reason is that the K-means algorithm can only work on the one dimension or two dimension data structure. The process of jpeg.reshape below will return a one dimension array and every single element represents a pixel value. It can be arbitrary value of RGB. 
+
+\begin{verbatim}
+jpeg_feed = jpeg.reshape(jpeg.shape[0] * jpeg.shape[1] * jpeg.shape[2] * jpeg.shape[3], 1)
+\end{verbatim}
+
+\subsubsection{Kmeans - Predict}
+The main process of K-means algorithm is to create a mask of the original data. By setting number of clusters and predicting the images, we received the mask stored in the variable, result. Its elements were integers from 0 to 3. After reshaping it to image matrix, we could show this mask and save it to the driver. 
+
+\begin{verbatim}
+n_clusters = 4
+kmeans = KMeans(n_clusters=n_clusters, random_state=0).fit(jpeg_feed)
+result = kmeans.predict(jpeg_feed)
+result = result.reshape(21, 480, 640, 3)
+\end{verbatim}
+
+
+
+\subsection{Appendix 2: Photos}
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=1.\textwidth]{1548556288818083016_pred.png}
+  \end{center}
+  \caption{A Mask Generated by Semantic-Segmentation CNN without Rectangle Refining}
+\end{figure}
+
+\begin{figure}[H]
+  \begin{center}
+    \includegraphics[width=1.\textwidth]{combined_112.png}
+  \end{center}
+  \caption{A Sample of Semantic-Segmentation CNN: Combination of Original Picture and Generated Mask without Rectangle Refining}
+\end{figure}
 
 \newpage
 % bibliography
